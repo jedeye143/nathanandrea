@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Nathaniel & Rhea</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@100;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#FBFAF7] text-[#1F1F1F]">
+
+    <!-- Sacred Union Pre-Loader -->
+    <div id="loader"
+        class="fixed inset-0 z-[9999] bg-[#FBFAF7] flex items-center justify-center transition-opacity duration-1000 overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.1)_0%,_transparent_70%)] animate-pulse"></div>
+        <div id="sacred-content" class="relative flex flex-col items-center justify-center text-center px-6">
+            <h1 class="font-cormorant text-[#3B0764] text-7xl md:text-9xl tracking-[0.1em] mb-8">N <span class="text-[#D4AF37] italic">&</span> R</h1>
+            <div id="enter-prompt" class="opacity-0 transform scale-90 transition-all duration-1000">
+                <button id="enter-btn" class="group relative py-4 px-12 border border-[#D4AF37]/40 overflow-hidden bg-white/5">
+                    <span class="relative z-10 font-montserrat text-[10px] uppercase tracking-[0.5em] text-[#3B0764] group-hover:text-white transition-colors">Enter Gallery</span>
+                    <div class="absolute inset-0 bg-[#3B0764] translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                </button>
+            </div>
+        </div>
+        <div id="radiant-burst" class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-[2000ms]"></div>
+    </div>
+
+    <!-- Main Content Wrapper -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000 flex-grow">
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"
+        class="fixed w-4 h-4 bg-[#D4AF37] rounded-full pointer-events-none z-[9999] mix-blend-difference"></div>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle"
+        class="fixed bottom-10 right-10 z-[100] w-14 h-14 bg-white shadow-2xl rounded-full flex items-center justify-center text-[#3B0764] hover:scale-110 transition-transform">
+        <i class="fa-solid fa-music"></i>
+    </button>
+    <audio id="bg-music" preload="auto"></audio>
+
+    <!-- Navigation -->
+    <nav id="navbar"
+        class="fixed top-0 left-0 w-full z-50 flex justify-between items-center py-6 md:py-8 px-6 md:px-12 transition-all duration-700">
+        <a href="index.html" class="group relative flex items-center space-x-4">
+            <div class="relative w-12 h-12 md:w-14 md:h-14 flex items-center justify-center">
+                <!-- Golden Halo Circles -->
+                <div
+                    class="absolute inset-0 border border-[#D4AF37]/30 rounded-full group-hover:rotate-180 transition-transform duration-[2000ms]">
+                </div>
+                <div
+                    class="absolute inset-1 border border-[#D4AF37]/10 rounded-full group-hover:-rotate-180 transition-transform duration-[3000ms]">
+                </div>
+                <!-- Monogram -->
+                <span
+                    class="font-cormorant text-xl md:text-2xl font-bold text-[#3B0764] relative z-10 tracking-tighter">N<span
+                        class="text-[#D4AF37] italic mx-0.5">&</span>R</span>
+            </div>
+            <div class="hidden sm:flex flex-col justify-center">
+                <span
+                    class="block font-cormorant text-sm md:text-base text-[#3B0764] font-bold tracking-[0.2em]">NATHANIEL
+                    & REA</span>
+                <span
+                    class="block font-montserrat text-[7px] md:text-[8px] uppercase tracking-[0.5em] text-slate-400">The
+                    Sacred Union</span>
+            </div>
+        </a>
+        <div
+            class="hidden md:flex space-x-12 font-montserrat text-[10px] uppercase tracking-[0.5em] font-bold text-[#3B0764]">
+            <a href="index.html" class="hover:opacity-50 transition-opacity">Return to Invitation</a>
+        </div>
+        <a href="index.html" class="md:hidden text-2xl text-[#3B0764]"><i class="fa-solid fa-arrow-left"></i></a>
+    </nav>
+
+    <!-- Gallery Hero: Ethereal Light Edition -->
+    <section
+        class="min-h-[80vh] flex flex-col justify-center pt-32 pb-32 bg-[#FBFAF7] relative overflow-hidden text-center z-20">
+        <!-- Subtle Ethereal Glows -->
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(233,213,255,0.2)_0%,_transparent_70%)] opacity-50">
+        </div>
+        <div
+            class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[120px] rounded-full -translate-y-1/2">
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex justify-center mb-12">
+                <div class="w-20 h-[1px] bg-[#D4AF37]/30"></div>
+            </div>
+            <h1 class="font-cormorant text-[#3B0764] text-7xl md:text-[11rem] leading-[0.8] mb-12">
+                Our Journey <br> <span class="italic text-[#D4AF37]">Guided by Grace</span>
+            </h1>
+            <p class="font-montserrat text-slate-400 text-[10px] md:text-[12px] uppercase tracking-[1em]">
+                Walking in Faith • United in Love
+            </p>
+        </div>
+    </section>
+
+    <!-- Romantic Masonry Gallery Content -->
+    <section id="gallery" class="container mx-auto px-6 md:px-12 pt-20 pb-40 relative z-10">
+        <!-- Floating Petals & Sparkles -->
+        <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+            <div class="petal" style="left: 5%; animation-duration: 25s;">🌸</div>
+            <div class="petal" style="left: 45%; animation-duration: 22s;">🌸</div>
+            <div class="petal" style="left: 85%; animation-duration: 28s;">🌸</div>
+        </div>
+
+        <!-- High-End Balanced Masonry Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 grid-flow-dense relative z-10">
+
+            <!-- Item 1: Large Portrait -->
+            <div class="md:row-span-3 md:col-span-1 abstract-frame frame-card image-lift group">
+                <img src="galleryimages/32e172fc-42f4-4216-9a35-d83a5d5d8c9a.jfif"
+                    class="w-full h-full object-cover object-[center_20%] transition-all duration-1000 group-hover:scale-105">
+                <div class="absolute top-4 right-4 text-white/50 text-xl"><i class="fa-solid fa-dove"></i></div>
+            </div>
+
+            <!-- Verse Card 1 -->
+            <div
+                class="md:row-span-1 bg-[#FFFCEB] p-6 shadow-xl border-l-4 border-[#D4AF37] flex flex-col justify-center rotate-[-1deg] hover:rotate-0 transition-all duration-500">
+                <p class="font-cormorant italic text-[#3B0764] text-lg leading-relaxed">"Love is patient, love is
+                    kind..."</p>
+                <p class="font-montserrat text-[8px] uppercase tracking-widest mt-4 text-[#D4AF37]">1 Corinthians 13
+                </p>
+            </div>
+
+            <!-- Item 2: Arched Portrait -->
+            <div
+                class="md:row-span-2 abstract-frame frame-card image-lift group rounded-[5rem_5rem_1rem_1rem] overflow-hidden border-4 border-white shadow-xl">
+                <img src="galleryimages/39adf5dc-575c-4238-8789-8e689c011b01.jfif"
+                    class="w-full h-full object-cover object-[center_30%] group-hover:scale-110 transition-all">
+            </div>
+
+            <!-- Item 3: Square Laughter -->
+            <div class="bg-white p-3 shadow-2xl rotate-2 hover:rotate-0 transition-all duration-700 image-lift">
+                <img src="galleryimages/65319a7e-5373-46d2-ab01-e1c6ae33137d.jfif"
+                    class="w-full h-40 md:h-48 object-cover object-[center_20%] mb-3">
+                <p class="font-cormorant text-center text-slate-500 italic text-lg">Grace & Joy</p>
+            </div>
+
+            <!-- Item 4: Large Wide Moment -->
+            <div
+                class="md:col-span-2 md:row-span-2 bg-white p-3 shadow-2xl rotate-[-1deg] hover:rotate-0 transition-all duration-700 image-lift overflow-hidden">
+                <img src="galleryimages/736c39b4-9336-4e53-ac8e-50e1b77ab635.jfif"
+                    class="w-full h-full object-cover object-[center_25%]">
+                <div class="absolute top-3 right-3 text-[#D4AF37] opacity-60"><i class="fa-solid fa-cross"></i>
+                </div>
+            </div>
+
+            <!-- Verse Card 2 -->
+            <div class="text-center p-6 border border-[#D4AF37]/20 bg-white shadow-sm flex flex-col justify-center">
+                <p class="font-cormorant text-xl italic text-[#3B0764]">"I have found the one whom my soul loves."
+                </p>
+            </div>
+
+            <!-- Item 5: Wide Beach -->
+            <div class="md:col-span-2 md:row-span-2 abstract-frame frame-card image-lift group overflow-hidden">
+                <img src="galleryimages/7867d614-d1f0-48f3-ace6-3267bd4503d4.jfif"
+                    class="w-full h-full object-cover object-[center_25%] group-hover:scale-105 transition-all">
+            </div>
+
+            <!-- Item 6: Tall Soulmate -->
+            <div class="md:row-span-2 abstract-frame frame-card image-lift group">
+                <img src="galleryimages/7e2c7d1f-2fa2-4188-8937-5fdf1daa80c3.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+            </div>
+
+            <!-- Item 7: Cinematic Horizon -->
+            <div class="md:col-span-2 md:row-span-2 bg-white p-3 shadow-2xl image-lift group relative overflow-hidden">
+                <img src="galleryimages/85bb751f-67e9-4b00-9438-beb048ea3135.jfif"
+                    class="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition-all duration-[3s]">
+                <div class="absolute top-6 left-6 text-white z-20">
+                    <p class="font-montserrat text-[8px] uppercase tracking-[0.6em] text-white/80">Guided by His
+                        Light</p>
+                </div>
+            </div>
+
+            <!-- Item 8: Circle Joy -->
+            <div
+                class="abstract-frame frame-card image-lift group rounded-[2rem] overflow-hidden border-4 border-white shadow-xl aspect-square">
+                <img src="galleryimages/8ddbb0f2-1e99-4e2e-929a-3648e648ba4e.jfif"
+                    class="w-full h-full object-cover object-[center_20%] group-hover:scale-110 transition-all">
+            </div>
+
+            <!-- Item 9: Praying Hands -->
+            <div class="abstract-frame frame-card image-lift group">
+                <img src="galleryimages/95a9fb6e-3870-4be3-a786-d9ec527ea63e.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+                <div class="absolute bottom-4 right-4 text-[#D4AF37]/30 text-2xl rotate-12"><i
+                        class="fa-solid fa-hands-praying"></i></div>
+            </div>
+
+            <!-- Item 10: Ecclesiastes Blessing -->
+            <div
+                class="md:row-span-1 bg-[#FBFAF7] p-6 border border-[#D4AF37]/20 image-lift flex flex-col items-center justify-center text-center shadow-inner">
+                <i class="fa-solid fa-dove text-[#D4AF37] mb-2 opacity-40"></i>
+                <p class="font-cormorant italic text-[#3B0764] text-lg leading-tight">Everything beautiful in its
+                    time.</p>
+            </div>
+
+            <!-- Item 11: Large Window -->
+            <div class="md:row-span-2 bg-white p-2 shadow-2xl image-lift group">
+                <img src="galleryimages/bde28bcd-19a1-4bba-9a40-47e8c507b34c.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+                <div
+                    class="absolute inset-0 border-[20px] border-white/20 group-hover:border-0 transition-all duration-700">
+                </div>
+            </div>
+
+            <!-- Remaining Journey Items (Packed tightly to fill gaps) -->
+            <div class="abstract-frame frame-card image-lift group">
+                <img src="galleryimages/bd8cdcfc-0432-4002-bb0d-cd6250606deb.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+            </div>
+            <div class="abstract-frame frame-card image-lift group">
+                <img src="galleryimages/bf2bba31-9c4c-4734-b4bf-4222e0f761a3.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+            </div>
+            <div class="abstract-frame frame-card image-lift group">
+                <img src="galleryimages/c8697aae-34cd-4b1b-be51-4f485d0609ab.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+            </div>
+            <div class="abstract-frame frame-card image-lift group">
+                <img src="galleryimages/ca8b99af-70f9-4281-bbd7-32dee3f1c04e.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+            </div>
+            <div class="md:col-span-2 md:row-span-2 abstract-frame frame-card image-lift group">
+                <img src="galleryimages/caf1e8e4-1234-4c12-830a-d9e646235d44.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+            </div>
+            <div class="abstract-frame frame-card image-lift group">
+                <img src="galleryimages/dbb6633c-0ec9-41c8-b6b9-df4806da6e35.jfif"
+                    class="w-full h-full object-cover object-[center_20%]">
+            </div>
+            <!-- Verse Card: Ecclesiastes 4:9 -->
+            <div
+                class="md:row-span-1 bg-[#FFFCEB] p-8 shadow-xl border-l-4 border-[#D4AF37] flex flex-col justify-center rotate-[1deg] hover:rotate-0 transition-all duration-500">
+                <p class="font-cormorant italic text-[#3B0764] text-xl leading-relaxed">"Two are better than one,
+                    because they have a good return for their labor."</p>
+                <p class="font-montserrat text-[8px] uppercase tracking-widest mt-4 text-[#D4AF37]">Ecclesiastes 4:9</p>
+            </div>
+
+            <!-- Verse Card: Romans 12:10 -->
+            <div
+                class="md:row-span-1 bg-white p-8 border border-[#D4AF37]/10 flex flex-col justify-center text-center shadow-sm">
+                <p class="font-cormorant italic text-[#3B0764] text-xl leading-relaxed">"Be devoted to one another in
+                    love. Honor one another above yourselves."</p>
+                <p class="font-montserrat text-[8px] uppercase tracking-widest mt-4 text-[#D4AF37]">Romans 12:10</p>
+            </div>
+
+            <!-- Verse Card: Mark 10:9 -->
+            <div
+                class="md:row-span-1 bg-[#3B0764] p-8 text-white flex flex-col justify-center text-center shadow-2xl rotate-[-2deg] hover:rotate-0 transition-all">
+                <p class="font-cormorant italic text-lg leading-relaxed">"Therefore what God has joined together, let no
+                    one separate."</p>
+                <p class="font-montserrat text-[8px] uppercase tracking-widest mt-4 text-[#D4AF37]">Mark 10:9</p>
+            </div>
+
+            <!-- Verse Card: Colossians 3:14 -->
+            <div class="md:row-span-1 bg-white p-8 border-r-4 border-[#D4AF37] flex flex-col justify-center shadow-lg">
+                <p class="font-cormorant italic text-[#3B0764] text-xl leading-relaxed">"And over all these virtues put
+                    on love, which binds them all together in perfect unity."</p>
+                <p class="font-montserrat text-[8px] uppercase tracking-widest mt-4 text-[#D4AF37]">Colossians 3:14</p>
+            </div>
+            <!-- Verse Card: 1 Corinthians 13:13 -->
+            <div
+                class="md:row-span-1 bg-[#FFFCEB] p-8 shadow-xl border-t-4 border-[#D4AF37] flex flex-col justify-center text-center rotate-[-1deg] hover:rotate-0 transition-all">
+                <p class="font-cormorant italic text-[#3B0764] text-xl leading-relaxed">"And now these three remain:
+                    faith, hope and love. But the greatest of these is love."</p>
+                <p class="font-montserrat text-[8px] uppercase tracking-widest mt-4 text-[#D4AF37]">1 Corinthians 13:13
+                </p>
+            </div>
+
+            <!-- Verse Card: Romantic Quote 1 -->
+            <div
+                class="md:row-span-1 bg-white p-8 border border-[#3B0764]/5 flex flex-col justify-center italic text-center shadow-sm">
+                <p class="font-cormorant text-[#3B0764] text-xl">"A successful marriage requires falling in love many
+                    times, always with the same person."</p>
+                <p class="font-montserrat text-[7px] uppercase tracking-widest mt-4 text-slate-300">Mignon McLaughlin
+                </p>
+            </div>
+
+            <!-- Verse Card: Genesis 2:24 -->
+            <div
+                class="md:row-span-1 bg-[#FBFAF7] p-8 border-b-4 border-[#D4AF37] flex flex-col justify-center text-center shadow-lg rotate-[2deg] hover:rotate-0 transition-all">
+                <p class="font-cormorant italic text-[#3B0764] text-xl leading-relaxed">"That is why a man leaves his
+                    father and mother and is united to his wife, and they become one flesh."</p>
+                <p class="font-montserrat text-[8px] uppercase tracking-widest mt-4 text-[#D4AF37]">Genesis 2:24</p>
+            </div>
+
+            <!-- Verse Card: Partner Quote -->
+            <div class="md:row-span-1 bg-[#3B0764] p-8 text-white flex flex-col justify-center text-center shadow-2xl">
+                <p class="font-cormorant italic text-lg leading-relaxed">"I choose you. And I'll choose you over and
+                    over and over. Without pause, without a doubt, in a heartbeat. I'll keep choosing you."</p>
+            </div>
+    </section>
+
+    <!-- Sweet Call to Action: Classic Light Edition -->
+
+
+    <!-- Official Footer: Classic Light Edition -->
+    <footer
+        class="w-full py-16 bg-[#FBFAF7] text-[#3B0764] relative overflow-hidden border-t border-[#3B0764]/5 mt-auto">
+        <div class="px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                <span class="font-cormorant text-3xl md:text-4xl tracking-widest text-[#3B0764] font-bold">Nathaniel
+                    <span class="italic text-[#D4AF37]">&</span> REA</span>
+                <div class="hidden md:block w-16 h-[1px] bg-[#D4AF37]/30"></div>
+            </div>
+            <div class="space-y-4 text-center md:text-right">
+                <p class="font-montserrat text-[10px] uppercase tracking-[0.6em] text-slate-400">
+                    EST. MAY 2026 • THE SACRED UNION
+                </p>
+                <p class="font-montserrat text-[8px] uppercase tracking-[0.4em] text-[#D4AF37] font-bold italic">
+                    Infinite Love • Eternal Grace
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

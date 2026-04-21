@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nathaniel James & Rea Joy | The Union</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@100;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#FBFAF7] text-[#1F1F1F] selection:bg-purple-200">
+
+    <!-- Sacred Union Pre-Loader (Christian Concept) -->
+    <div id="loader"
+        class="fixed inset-0 z-[9999] bg-[#FBFAF7] flex items-center justify-center transition-opacity duration-1000 overflow-hidden">
+        <!-- Ethereal Background Glow & Rays -->
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.15)_0%,_transparent_70%)] animate-pulse">
+        </div>
+        <div
+            class="absolute inset-0 opacity-10 bg-[linear-gradient(45deg,transparent_45%,rgba(212,175,55,0.4)_50%,transparent_55%)] animate-ray-sweep">
+        </div>
+
+        <div id="sacred-content" class="relative flex flex-col items-center justify-center text-center px-6">
+            <!-- The Threefold Cord (Braiding Lines) -->
+            <div class="absolute w-[32rem] h-[32rem] border border-[#D4AF37]/10 rounded-full animate-spin-slow"></div>
+            <div class="absolute w-[30rem] h-[30rem] border border-[#D4AF37]/5 rounded-full animate-spin-slow-reverse">
+            </div>
+
+            <!-- Sacred Symbols & Verse -->
+            <div class="relative z-10 space-y-8 max-w-2xl">
+                <div class="flex flex-col items-center space-y-4">
+                    <i class="fa-solid fa-cross text-[#D4AF37] text-3xl opacity-80 animate-bounce-slow"></i>
+                    <div class="h-12 w-[1px] bg-gradient-to-b from-[#D4AF37] to-transparent"></div>
+                </div>
+
+                <h1 class="font-cormorant text-[#3B0764] text-7xl md:text-9xl tracking-[0.1em] animate-zoom-in mb-8">
+                    N <span class="text-[#D4AF37] italic">&</span> R
+                </h1>
+
+                <div class="space-y-6 pt-8 border-t border-[#D4AF37]/20">
+                    <p
+                        class="font-cormorant text-[#3B0764] italic text-2xl md:text-3xl tracking-wide animate-fade-in leading-relaxed">
+                        "A Threefold Cord is Not Easily Broken"
+                    </p>
+                    <div class="flex items-center justify-center space-x-4 opacity-0 animate-fade-in-delay">
+                        <div class="h-[1px] w-8 bg-[#D4AF37]/40"></div>
+                        <p class="font-montserrat text-[10px] uppercase tracking-[1em] text-[#D4AF37]">Ecclesiastes 4:12
+                        </p>
+                        <div class="h-[1px] w-8 bg-[#D4AF37]/40"></div>
+                    </div>
+                </div>
+                <!-- Enter Button: The Interaction Trigger for Autoplay -->
+                <div id="enter-prompt" class="pt-12 opacity-0 transform scale-90 transition-all duration-1000">
+                    <button id="enter-btn"
+                        class="group relative py-4 px-12 border border-[#D4AF37]/40 overflow-hidden bg-white/5">
+                        <span
+                            class="relative z-10 font-montserrat text-[10px] uppercase tracking-[0.5em] text-[#3B0764] group-hover:text-white transition-colors">Enter
+                            Invitation</span>
+                        <div
+                            class="absolute inset-0 bg-[#3B0764] translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Radiant Burst Layer (For Exit) -->
+        <div id="radiant-burst"
+            class="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-[2000ms]"></div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"
+        class="fixed w-4 h-4 bg-[#D4AF37] rounded-full pointer-events-none z-[9999] mix-blend-difference transition-transform duration-200">
+    </div>
+    <div id="custom-cursor-outline"
+        class="fixed w-10 h-10 border border-[#D4AF37] rounded-full pointer-events-none z-[9998] transition-all duration-500 ease-out">
+    </div>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle"
+        class="fixed bottom-10 right-10 z-[100] w-14 h-14 bg-white shadow-2xl rounded-full flex items-center justify-center text-[#3B0764] hover:scale-110 transition-transform">
+        <i class="fa-solid fa-music"></i>
+    </button>
+    <audio id="bg-music" preload="auto"></audio>
+
+    <!-- Main Content Wrapper (Hidden initially for reveal) -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000 flex-grow">
+        <!-- Navigation -->
+        <nav id="navbar"
+            class="fixed top-0 left-0 w-full z-50 flex justify-between items-center py-6 md:py-8 px-6 md:px-12 transition-all duration-700">
+            <a href="#" class="group relative flex items-center space-x-4">
+                <div class="relative w-12 h-12 md:w-14 md:h-14 flex items-center justify-center">
+                    <!-- Golden Halo Circles -->
+                    <div
+                        class="absolute inset-0 border border-[#D4AF37]/30 rounded-full group-hover:rotate-180 transition-transform duration-[2000ms]">
+                    </div>
+                    <div
+                        class="absolute inset-1 border border-[#D4AF37]/10 rounded-full group-hover:-rotate-180 transition-transform duration-[3000ms]">
+                    </div>
+                    <!-- Monogram -->
+                    <span
+                        class="font-cormorant text-xl md:text-2xl font-bold text-[#3B0764] relative z-10 tracking-tighter">N<span
+                            class="text-[#D4AF37] italic mx-0.5">&</span>R</span>
+                </div>
+                <div class="hidden sm:flex flex-col justify-center">
+                    <span
+                        class="block font-cormorant text-sm md:text-base text-[#3B0764] font-bold tracking-[0.2em]">NATHANIEL
+                        & REA</span>
+                    <span
+                        class="block font-montserrat text-[7px] md:text-[8px] uppercase tracking-[0.5em] text-slate-400">The
+                        Sacred Union</span>
+                </div>
+            </a>
+            <div
+                class="hidden md:flex space-x-12 font-montserrat text-[10px] uppercase tracking-[0.5em] font-bold text-[#3B0764]">
+                <a href="#hero" class="hover:opacity-50 transition-opacity">Invited</a>
+                <a href="#story" class="hover:opacity-50 transition-opacity">Union</a>
+                <a href="gallery.html" class="hover:opacity-50 transition-opacity">Gallery</a>
+                <a href="#details" class="hover:opacity-50 transition-opacity">Gathering</a>
+                <a href="#guestlist" class="hover:opacity-50 transition-opacity">Circle</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-2xl text-[#3B0764] relative z-[101]"><i
+                    class="fa-solid fa-bars-staggered"></i></button>
+        </nav>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu"
+            class="fixed inset-0 bg-[#3B0764] z-[100] flex flex-col items-center justify-center space-y-10 transition-all duration-700 translate-x-full">
+            <!-- Explicit Close Button for Mobile -->
+            <button id="close-menu"
+                class="absolute top-10 right-10 text-white text-4xl hover:rotate-90 transition-transform">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <a href="#hero"
+                class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Invited</a>
+            <a href="#story"
+                class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Union</a>
+            <a href="gallery.html"
+                class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Gallery</a>
+            <a href="#details"
+                class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Gathering</a>
+            <a href="#guestlist"
+                class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Circle</a>
+        </div>
+
+        <!-- Hero Section: Fully Responsive Faded Image Layout -->
+        <section id="hero"
+            class="relative min-h-screen flex flex-col md:flex-row items-center overflow-hidden bg-[#FBFAF7]">
+
+            <!-- Image Container -->
+            <div
+                class="relative w-full md:absolute md:right-0 md:top-0 md:w-3/4 h-[60vh] md:h-full z-0 order-1 md:order-2">
+                <div class="relative w-full h-full">
+                    <img src="images/wed.png"
+                        class="w-full h-full object-cover object-[center_15%] md:object-right opacity-80 md:opacity-80">
+
+                    <!-- Fade Gradient: Vertical for Mobile, Horizontal for Desktop -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FBFAF7] md:hidden">
+                    </div>
+                    <div
+                        class="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-[#FBFAF7] via-[#FBFAF7]/50 to-transparent hidden md:block">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Content -->
+            <div
+                class="w-full md:w-1/2 px-6 md:px-24 pt-20 pb-12 md:pt-28 md:pb-0 relative z-10 order-2 md:order-1 text-center md:text-left">
+                <div class="max-w-2xl mx-auto md:mx-0">
+                    <div class="inline-block border-l border-[#D4AF37] pl-4 md:pl-6 mb-8 md:mb-10">
+                        <span
+                            class="block font-montserrat text-slate-400 uppercase tracking-[0.5em] md:tracking-[0.8em] text-[7px] md:text-[9px]">Official
+                            Digital Invitation</span>
+                    </div>
+                    <h1
+                        class="font-cormorant text-[#3B0764] text-5xl md:text-[8.5rem] leading-[1.1] md:leading-[0.85] mb-10 md:mb-14">
+                        Nathaniel <br class="hidden md:block">
+                        <span class="italic text-[#D4AF37]">&</span> Rea
+                    </h1>
+                    <p
+                        class="font-cormorant text-slate-400 text-lg md:text-3xl italic mb-12 md:mb-16 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        "Where the ocean meets the sky, our forever begins."
+                    </p>
+                    <div class="space-y-10 mb-20">
+                        <div class="flex flex-col space-y-5">
+                            <div class="flex items-center space-x-6">
+                                <div class="w-12 h-[1px] bg-[#D4AF37]/30"></div>
+                                <p
+                                    class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#3B0764] font-bold">
+                                    May 16th, 2026 • 9:00 AM
+                                </p>
+                            </div>
+                            <p
+                                class="font-montserrat text-slate-400 text-[10px] md:text-[12px] uppercase tracking-[0.5em] pl-18 md:pl-[4.5rem]">
+                                Nana's Place, Bago City
+                            </p>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col md:flex-row items-center justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-8 mb-16">
+                        <a href="#story"
+                            class="w-full md:w-auto group relative inline-block py-4 md:py-6 px-12 md:px-16 border border-[#3B0764] text-[#3B0764] font-montserrat text-[10px] uppercase tracking-widest overflow-hidden transition-all">
+                            <span class="relative z-10 group-hover:text-white transition-colors">The Journey</span>
+                            <div
+                                class="absolute inset-0 bg-[#3B0764] translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="pl-18 md:pl-[4.5rem]">
+                        <p
+                            class="font-montserrat text-[9px] md:text-[11px] text-[#D4AF37] font-bold tracking-[0.6em] uppercase opacity-60">
+                            #NATHANIELfoundhisJOY
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Section: The Temporal Gateway (Classic Light Edition) -->
+        <section id="countdown" class="py-24 md:py-40 bg-[#FBFAF7] relative overflow-hidden">
+            <!-- Subtle Radial Glow -->
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,7,100,0.03)_0%,transparent_70%)]">
+            </div>
+
+            <div class="container mx-auto px-6 md:px-12 relative z-10">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 border-y border-[#3B0764]/5 py-20 md:py-32">
+                    <div class="text-center group">
+                        <h3 id="days"
+                            class="font-cormorant text-7xl md:text-[12rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-all duration-700">
+                            00</h3>
+                        <p
+                            class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.5em] text-[#D4AF37] mt-4 font-bold">
+                            Days</p>
+                    </div>
+                    <div class="text-center group">
+                        <h3 id="hours"
+                            class="font-cormorant text-7xl md:text-[12rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-all duration-700">
+                            00</h3>
+                        <p
+                            class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.5em] text-[#D4AF37] mt-4 font-bold">
+                            Hours</p>
+                    </div>
+                    <div class="text-center group">
+                        <h3 id="minutes"
+                            class="font-cormorant text-7xl md:text-[12rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-all duration-700">
+                            00</h3>
+                        <p
+                            class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.5em] text-[#D4AF37] mt-4 font-bold">
+                            Minutes</p>
+                    </div>
+                    <div class="text-center group">
+                        <h3 id="seconds"
+                            class="font-cormorant text-7xl md:text-[12rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-all duration-700">
+                            00</h3>
+                        <p
+                            class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.5em] text-[#D4AF37] mt-4 font-bold">
+                            Seconds</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Section: The Sacred Narrative (Celestial Purple Edition) -->
+        <section id="story" class="py-28 md:py-56 bg-[#0F041A] overflow-hidden relative">
+            <!-- Architectural Glows & Background Texture -->
+            <div class="absolute inset-0 opacity-5 pointer-events-none">
+                <div
+                    class="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]">
+                </div>
+            </div>
+            <div
+                class="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#3B0764]/20 blur-[150px] rounded-full -translate-y-1/2 -translate-x-1/2">
+            </div>
+
+            <div class="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
+                <div class="flex flex-col lg:flex-row gap-24 md:gap-32 items-center">
+
+                    <!-- Left: Cinematic Image Composition -->
+                    <div class="w-full lg:w-1/2 relative group">
+                        <!-- Floating Golden Frames -->
+                        <div
+                            class="absolute -top-10 -right-10 w-3/4 h-3/4 border-t border-r border-[#D4AF37]/30 transition-transform duration-1000 group-hover:translate-x-4 group-hover:-translate-y-4">
+                        </div>
+                        <div
+                            class="absolute -bottom-10 -left-10 w-1/2 h-1/2 border-b border-l border-[#D4AF37] transition-transform duration-1000 group-hover:-translate-x-4 group-hover:translate-y-4">
+                        </div>
+
+                        <!-- Main Image with Solid Purple Backing -->
+                        <div class="relative z-10">
+                            <div
+                                class="absolute inset-0 bg-[#3B0764] rounded-sm translate-x-6 translate-y-6 opacity-20">
+                            </div>
+                            <div
+                                class="relative overflow-hidden rounded-sm border border-white/5 shadow-2xl bg-[#1A042C]">
+                                <img src="images/wed.png"
+                                    class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-[3s] opacity-90 group-hover:opacity-100">
+                                <!-- Subtle Gradient Overlay -->
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#0F041A]/40 to-transparent"></div>
+                            </div>
+                        </div>
+
+                        <!-- Abstract "Story" Label -->
+                        <div
+                            class="absolute -top-24 -left-12 font-cormorant text-8xl md:text-[14rem] text-white/5 select-none italic z-0 tracking-tighter">
+                            Story
+                        </div>
+                    </div>
+
+                    <!-- Right: The Narrative -->
+                    <div class="w-full lg:w-1/2 text-center lg:text-left space-y-12">
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center space-x-4 opacity-60">
+                                <span class="h-[1px] w-8 bg-[#D4AF37]"></span>
+                                <h4
+                                    class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#D4AF37] font-bold">
+                                    The Union</h4>
+                            </div>
+                            <h2 class="font-cormorant text-white text-5xl md:text-8xl leading-[0.9] mb-8">
+                                A Symphony <br>
+                                <span class="italic text-[#D4AF37]">of Two Souls</span>
+                            </h2>
+                        </div>
+
+                        <p
+                            class="font-cormorant text-lg md:text-2xl leading-relaxed text-white/60 italic max-w-xl mx-auto lg:mx-0">
+                            "The journey didn't start with a bang, but with a quiet understanding. From the rainy
+                            streets
+                            of the city to the sun-drenched moments of our travels, we found home in each other's
+                            silence."
+                        </p>
+
+                        <div class="grid grid-cols-2 gap-12 border-t border-white/10 pt-16">
+                            <div class="space-y-4 group">
+                                <span
+                                    class="font-cormorant text-[#D4AF37] text-2xl md:text-4xl italic block group-hover:translate-x-2 transition-transform">The
+                                    Meeting</span>
+                                <p
+                                    class="font-montserrat text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-white/30">
+                                    June 12, 2023 • First Glimpse</p>
+                            </div>
+                            <div class="space-y-4 group">
+                                <span
+                                    class="font-cormorant text-[#D4AF37] text-2xl md:text-4xl italic block group-hover:translate-x-2 transition-transform">The
+                                    Proposal</span>
+                                <p
+                                    class="font-montserrat text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-white/30">
+                                    January 01, 2026 • The Promise</p>
+                            </div>
+                        </div>
+
+                        <!-- Added Call to Action to Gallery -->
+                        <div class="pt-8">
+                            <a href="gallery.html"
+                                class="inline-flex items-center space-x-6 group/link text-white/40 hover:text-[#D4AF37] transition-colors">
+                                <span
+                                    class="font-montserrat text-[10px] uppercase tracking-[0.5em] border-b border-white/10 pb-1 group-hover/link:border-[#D4AF37]">Explore
+                                    Our Memories</span>
+                                <i
+                                    class="fa-solid fa-arrow-right-long text-[12px] group-hover/link:translate-x-4 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Teaser -->
+        <section id="gallery" class="py-20 md:py-32 bg-white relative overflow-hidden">
+            <div class="container mx-auto px-6 md:px-12 text-center">
+                <h2 class="font-cormorant text-5xl md:text-8xl text-[#3B0764] mb-12">Captured <br> <span
+                        class="italic text-[#D4AF37]">Moments</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-16 px-4 md:px-6">
+                    <div class="abstract-frame frame-card aspect-square group image-lift">
+                        <img src="galleryimages/32e172fc-42f4-4216-9a35-d83a5d5d8c9a.jfif"
+                            class="w-full h-full object-cover transition-all duration-700 rounded-sm group-hover:scale-110">
+                    </div>
+                    <div
+                        class="abstract-frame frame-card aspect-square group md:mt-12 image-lift rotate-2 hover:rotate-0 transition-transform">
+                        <img src="galleryimages/736c39b4-9336-4e53-ac8e-50e1b77ab635.jfif"
+                            class="w-full h-full object-cover transition-all duration-700 rounded-sm group-hover:scale-110">
+                    </div>
+                    <div class="abstract-frame frame-card aspect-square group image-lift">
+                        <img src="galleryimages/85bb751f-67e9-4b00-9438-beb048ea3135.jfif"
+                            class="w-full h-full object-cover transition-all duration-700 rounded-sm group-hover:scale-110">
+                    </div>
+                    <div
+                        class="abstract-frame frame-card aspect-square group md:mt-12 image-lift -rotate-2 hover:rotate-0 transition-transform">
+                        <img src="galleryimages/caf1e8e4-1234-4c12-830a-d9e646235d44.jfif"
+                            class="w-full h-full object-cover transition-all duration-700 rounded-sm group-hover:scale-110">
+                    </div>
+                </div>
+                <a href="gallery.html"
+                    class="group relative inline-block py-4 px-10 md:px-12 bg-[#3B0764] text-white font-montserrat text-[10px] uppercase tracking-widest overflow-hidden transition-all shadow-xl mb-32">
+                    <span class="relative z-10">View Full Gallery</span>
+                    <div
+                        class="absolute inset-0 bg-[#D4AF37] translate-x-full group-hover:translate-x-0 transition-transform duration-500">
+                    </div>
+                </a> <!-- Wedding Attire Section (Visual Mood Board) -->
+                <div class="w-full px-4 md:px-8 pt-32 pb-32 relative group">
+                    <!-- Section Title -->
+                    <div class="text-center mb-16">
+                        <h2 class="font-cormorant text-[#3B0764] text-5xl md:text-7xl mb-4">Wedding <span
+                                class="italic text-[#D4AF37]">Attire</span></h2>
+                        <div class="w-16 h-[1px] bg-[#D4AF37] mx-auto opacity-40"></div>
+                    </div>
+
+                    <div
+                        class="flex flex-col md:flex-row items-stretch gap-0 border border-purple-100/50 bg-white shadow-[0_50px_100px_-20px_rgba(59,7,100,0.08)] overflow-hidden rounded-sm">
+
+                        <!-- Left Mood Side (Atmospheric) -->
+                        <div class="w-full md:w-[25%] relative min-h-[350px] overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1549416878-b9ca95e26903?q=80&w=2670&auto=format&fit=crop"
+                                class="absolute inset-0 w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-[#3B0764]/60 mix-blend-multiply"></div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#3B0764] via-transparent to-transparent">
+                            </div>
+                            <div
+                                class="relative z-10 h-full flex flex-col items-center justify-center text-center px-10">
+                                <h2 class="font-cormorant text-white text-5xl md:text-6xl leading-none mb-4">The
+                                    <br><span class="italic text-[#D4AF37]">Palette</span>
+                                </h2>
+                                <p class="font-montserrat text-white/60 text-[7px] uppercase tracking-[0.8em]">Royal
+                                    Purple Theme</p>
+                            </div>
+                        </div>
+
+                        <!-- Right Detail Side (With Attire Images) -->
+                        <div class="w-full md:w-[75%] bg-[#FBFAF7] p-12 md:p-20 flex flex-col justify-center relative">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-12">
+
+                                <!-- Gentlemen -->
+                                <div class="space-y-8">
+                                    <div
+                                        class="relative group/attire overflow-hidden rounded-sm shadow-lg rotate-[-1deg] hover:rotate-0 transition-all duration-700 bg-white border border-purple-100/50 p-4">
+                                        <img src="attire/purplepolo.png"
+                                            class="w-full h-[300px] object-contain interactive-img group-hover/attire:scale-105 transition-transform duration-[2s]">
+                                        <div
+                                            class="absolute top-4 right-4 bg-white text-[#3B0764] px-3 py-1 text-[8px] font-montserrat uppercase tracking-widest shadow-xl">
+                                            For Him</div>
+                                    </div>
+                                    <div class="flex space-x-6">
+                                        <span
+                                            class="font-cormorant text-[#D4AF37] text-3xl italic opacity-30 mt-1">01</span>
+                                        <div>
+                                            <h3 class="font-cormorant text-[#3B0764] text-4xl mb-6">Gentlemen</h3>
+                                            <p
+                                                class="font-montserrat text-[9px] leading-[2.4] text-slate-500 tracking-[0.15em] uppercase">
+                                                We recommend a sophisticated <span
+                                                    class="text-[#3B0764] font-bold border-b border-[#D4AF37]/30">Purple
+                                                    Polo Shirt</span>. <br>
+                                                Clean, refined, and in theme.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Ladies -->
+                                <div class="space-y-8">
+                                    <div
+                                        class="relative group/attire overflow-hidden rounded-sm shadow-lg rotate-[1deg] hover:rotate-0 transition-all duration-700 bg-white border border-purple-100/50 lg:mt-12 p-4">
+                                        <img src="attire/purpledress.png"
+                                            class="w-full h-[300px] object-contain interactive-img group-hover/attire:scale-105 transition-transform duration-[2s]">
+                                        <div
+                                            class="absolute top-4 right-4 bg-white text-[#3B0764] px-3 py-1 text-[8px] font-montserrat uppercase tracking-widest shadow-xl">
+                                            For Her</div>
+                                    </div>
+                                    <div class="flex space-x-6">
+                                        <span
+                                            class="font-cormorant text-[#D4AF37] text-3xl italic opacity-30 mt-1">02</span>
+                                        <div>
+                                            <h3 class="font-cormorant text-[#3B0764] text-4xl mb-6">Ladies</h3>
+                                            <p
+                                                class="font-montserrat text-[9px] leading-[2.4] text-slate-500 tracking-[0.15em] uppercase">
+                                                Join us in your finest <span
+                                                    class="text-[#3B0764] font-bold border-b border-[#D4AF37]/30">Purple
+                                                    Attire</span>. <br>
+                                                Celebrate the union in the beautiful shades of the garden.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Bottom Palette Swatches -->
+                            <div class="mt-24 pt-12 border-t border-purple-100/30">
+                                <div
+                                    class="flex flex-col md:flex-row items-center md:items-end justify-between mb-8 space-y-4 md:space-y-0">
+                                    <div class="text-center md:text-left">
+                                        <h4
+                                            class="font-montserrat text-[10px] uppercase tracking-[0.4em] text-slate-400 mb-2">
+                                            The Mood</h4>
+                                        <h3 class="font-cormorant text-[#3B0764] text-3xl italic">Inspirational Shades
+                                        </h3>
+                                    </div>
+                                    <p class="font-montserrat text-[7px] uppercase tracking-[0.2em] text-[#D4AF37]">
+                                        Official Wedding Palette</p>
+                                </div>
+
+                                <div class="grid grid-cols-5 gap-4 md:gap-6">
+                                    <!-- Shade 1 -->
+                                    <div class="group/shade flex flex-col items-center space-y-3">
+                                        <div
+                                            class="w-full aspect-square rounded-full bg-[#E9D5FF] border border-white shadow-md group-hover/shade:scale-110 transition-transform duration-500 cursor-pointer">
+                                        </div>
+                                        <span
+                                            class="font-montserrat text-[6px] md:text-[7px] uppercase tracking-widest text-slate-400 opacity-0 group-hover/shade:opacity-100 transition-opacity">Lilac
+                                            Whisper</span>
+                                    </div>
+                                    <!-- Shade 2 -->
+                                    <div class="group/shade flex flex-col items-center space-y-3">
+                                        <div
+                                            class="w-full aspect-square rounded-full bg-[#C084FC] border border-white shadow-md group-hover/shade:scale-110 transition-transform duration-500 cursor-pointer">
+                                        </div>
+                                        <span
+                                            class="font-montserrat text-[6px] md:text-[7px] uppercase tracking-widest text-slate-400 opacity-0 group-hover/shade:opacity-100 transition-opacity">Lavender
+                                            Mist</span>
+                                    </div>
+                                    <!-- Shade 3 -->
+                                    <div class="group/shade flex flex-col items-center space-y-3">
+                                        <div
+                                            class="w-full aspect-square rounded-full bg-[#9333EA] border border-white shadow-md group-hover/shade:scale-110 transition-transform duration-500 cursor-pointer">
+                                        </div>
+                                        <span
+                                            class="font-montserrat text-[6px] md:text-[7px] uppercase tracking-widest text-slate-400 opacity-0 group-hover/shade:opacity-100 transition-opacity">Amethyst
+                                            Glow</span>
+                                    </div>
+                                    <!-- Shade 4 -->
+                                    <div class="group/shade flex flex-col items-center space-y-3">
+                                        <div
+                                            class="w-full aspect-square rounded-full bg-[#7E22CE] border border-white shadow-md group-hover/shade:scale-110 transition-transform duration-500 cursor-pointer">
+                                        </div>
+                                        <span
+                                            class="font-montserrat text-[6px] md:text-[7px] uppercase tracking-widest text-slate-400 opacity-0 group-hover/shade:opacity-100 transition-opacity">Imperial
+                                            Purple</span>
+                                    </div>
+                                    <!-- Shade 5 -->
+                                    <div class="group/shade flex flex-col items-center space-y-3">
+                                        <div
+                                            class="w-full aspect-square rounded-full bg-[#3B0764] border border-white shadow-md group-hover/shade:scale-110 transition-transform duration-500 cursor-pointer">
+                                        </div>
+                                        <span
+                                            class="font-montserrat text-[6px] md:text-[7px] uppercase tracking-widest text-slate-400 opacity-0 group-hover/shade:opacity-100 transition-opacity">Sacred
+                                            Royal</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gathering Section: The Celestial Gathering (Celestial Dark Edition) -->
+        <section id="details" class="py-28 md:py-56 bg-[#0F041A] relative overflow-hidden">
+            <!-- Architectural Glows & Orbs -->
+            <div
+                class="absolute top-0 right-0 w-[800px] h-[800px] bg-[#3B0764]/20 blur-[180px] rounded-full -translate-y-1/2 translate-x-1/4 animate-pulse">
+            </div>
+            <div
+                class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[150px] rounded-full translate-y-1/3 -translate-x-1/4">
+            </div>
+
+            <div class="container mx-auto px-6 md:px-12 relative z-10">
+                <!-- Header: Architectural & Sophisticated -->
+                <div class="flex flex-col items-center mb-40 text-center">
+                    <div class="w-[1px] h-24 bg-gradient-to-b from-[#D4AF37] to-transparent mb-12"></div>
+                    <h4
+                        class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[1em] text-[#D4AF37] font-bold mb-6">
+                        Sacred Destination</h4>
+                    <h2 class="font-cormorant text-white text-6xl md:text-[10rem] leading-[0.8] mb-8">
+                        The <span class="italic text-[#D4AF37]">Venue</span>
+                    </h2>
+                    <div class="flex items-center space-x-6 opacity-40">
+                        <span class="h-[1px] w-12 bg-white"></span>
+                        <p class="font-montserrat text-white text-[10px] uppercase tracking-[0.5em]">Nana's Place • Bago
+                            City</p>
+                        <span class="h-[1px] w-12 bg-white"></span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 md:gap-40 items-center">
+
+                    <!-- Left: Immersive Location Discovery -->
+                    <div class="relative order-2 lg:order-1">
+                        <!-- Map Marker Concept -->
+                        <div class="absolute -top-12 -left-12 z-20 hidden md:block">
+                            <div
+                                class="w-24 h-24 bg-white shadow-2xl rounded-full flex items-center justify-center border border-[#D4AF37]/20 animate-bounce-slow">
+                                <i class="fa-solid fa-location-dot text-3xl text-[#D4AF37]"></i>
+                            </div>
+                        </div>
+
+                        <div
+                            class="relative z-10 group rounded-2xl overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.7)] border border-white/5 aspect-[4/5] bg-[#0F041A]">
+                            <!-- Main Venue Image -->
+                            <img src="images/476334264_505539455899534_998155031224893899_n.jpg"
+                                class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-[6s] ease-out">
+
+                            <!-- Location Prompt Overlay -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-[#0F041A] via-transparent to-transparent">
+                            </div>
+
+                            <div class="absolute inset-x-0 bottom-0 p-8 md:p-12">
+                                <div
+                                    class="bg-[#1A042C]/80 backdrop-blur-2xl border border-white/10 p-8 md:p-12 space-y-6 shadow-2xl">
+                                    <div class="space-y-2 text-center md:text-left">
+                                        <h3 class="font-cormorant text-white text-4xl italic">Nana's Place</h3>
+                                        <p class="font-montserrat text-white/40 text-[9px] uppercase tracking-widest">
+                                            Brgy. Ma-ao, Bago City, Negros Occidental</p>
+                                    </div>
+
+                                    <a href="https://www.google.com/maps/place/Nana%E2%80%99s+Place/@10.5332032,122.8253588,15z/data=!4m7!3m6!1s0x33aec7ca5b26c351:0x85480c0faa77d706!4b1!8m2!3d10.5429787!4d122.8481381!16s%2Fg%2F11svm7xw6r?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank"
+                                        class="group/btn relative inline-flex items-center justify-center w-full py-5 bg-white/5 border border-white/10 text-white overflow-hidden transition-all">
+                                        <span
+                                            class="relative z-10 font-montserrat text-[10px] uppercase tracking-[0.4em] flex items-center gap-3 group-hover/btn:text-[#0F041A]">
+                                            <i class="fa-solid fa-map-location-dot"></i>
+                                            View on Google Maps
+                                        </span>
+                                        <div
+                                            class="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 ease-out">
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: The Sacred Timeline -->
+                    <div class="space-y-24 order-1 lg:order-2">
+                        <div class="space-y-4">
+                            <h3 class="font-cormorant text-white text-5xl md:text-7xl italic">The Program</h3>
+                            <p class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[0.6em] font-bold">
+                                Chronicles of our Union</p>
+                        </div>
+
+                        <div class="space-y-12">
+                            <!-- Program Item 1 -->
+                            <div class="flex items-start gap-10 group cursor-default">
+                                <div class="relative flex flex-col items-center">
+                                    <div
+                                        class="w-14 h-14 rounded-full border border-[#D4AF37]/40 bg-[#1A042C] flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.1)] group-hover:scale-110 group-hover:border-[#D4AF37] transition-all duration-500">
+                                        <span class="font-cormorant text-white text-xl italic mt-0.5">09</span>
+                                    </div>
+                                    <div class="w-[1px] h-20 bg-gradient-to-b from-[#D4AF37]/30 to-transparent mt-4">
+                                    </div>
+                                </div>
+                                <div class="pt-2">
+                                    <h4
+                                        class="font-cormorant text-white text-3xl mb-3 group-hover:text-[#D4AF37] transition-colors">
+                                        Processional March</h4>
+                                    <p
+                                        class="font-montserrat text-white/30 text-[9px] uppercase tracking-[0.4em] leading-relaxed">
+                                        The Sacred Procession and <br> Opening Prayer</p>
+                                </div>
+                            </div>
+
+                            <!-- Program Item 2 -->
+                            <div class="flex items-start gap-10 group cursor-default">
+                                <div class="relative flex flex-col items-center">
+                                    <div
+                                        class="w-14 h-14 rounded-full border border-white/10 bg-[#1A042C] flex items-center justify-center group-hover:scale-110 group-hover:border-[#D4AF37] transition-all duration-500">
+                                        <i
+                                            class="fa-solid fa-ring text-[14px] text-white/40 group-hover:text-[#D4AF37]"></i>
+                                    </div>
+                                    <div class="w-[1px] h-16 bg-gradient-to-b from-[#D4AF37]/20 to-transparent mt-4">
+                                    </div>
+                                </div>
+                                <div class="pt-1">
+                                    <h4
+                                        class="font-cormorant text-white text-2xl mb-2 group-hover:text-[#D4AF37] transition-colors uppercase tracking-tight">
+                                        Exchange of Vows</h4>
+                                    <p
+                                        class="font-montserrat text-white/30 text-[8px] uppercase tracking-[0.3em] leading-relaxed">
+                                        Personal Vows • Holy Rings • Bible & Coin Blessing</p>
+                                </div>
+                            </div>
+
+                            <!-- Program Item 3 -->
+                            <div class="flex items-start gap-10 group cursor-default">
+                                <div class="relative flex flex-col items-center">
+                                    <div
+                                        class="w-14 h-14 rounded-full border border-white/10 bg-[#1A042C] flex items-center justify-center group-hover:scale-110 group-hover:border-[#D4AF37] transition-all duration-500">
+                                        <i
+                                            class="fa-solid fa-fire-flame-curved text-[14px] text-white/40 group-hover:text-[#D4AF37]"></i>
+                                    </div>
+                                    <div class="w-[1px] h-20 bg-white/5 mt-4"></div>
+                                </div>
+                                <div class="pt-2">
+                                    <h4
+                                        class="font-cormorant text-white text-3xl mb-3 group-hover:text-[#D4AF37] transition-colors">
+                                        Sacred Rites</h4>
+                                    <p
+                                        class="font-montserrat text-white/30 text-[9px] uppercase tracking-[0.4em] leading-relaxed">
+                                        Veil & Cord Ceremony <br> Unity Candle Lighting</p>
+                                </div>
+                            </div>
+
+                            <!-- Program Item 4: Reception Special -->
+                            <div class="relative mt-12">
+                                <div
+                                    class="bg-gradient-to-br from-[#2D1B4D] to-[#1A042C] p-10 md:p-14 border border-[#D4AF37]/20 rounded-sm shadow-2xl group/reception">
+                                    <div class="flex flex-col md:flex-row justify-between items-center gap-12">
+                                        <div class="space-y-4 text-center md:text-left">
+                                            <h4
+                                                class="font-montserrat text-[10px] uppercase tracking-[0.6em] text-[#D4AF37]">
+                                                Celebration</h4>
+                                            <h3 class="font-cormorant text-white text-4xl md:text-5xl italic">The
+                                                Reception</h3>
+                                            <p
+                                                class="font-montserrat text-white/40 text-[9px] uppercase tracking-widest leading-loose">
+                                                Cake Cutting • First Dance <br> Toasting & Messages
+                                            </p>
+                                        </div>
+                                        <div class="w-full md:w-auto text-center">
+                                            <div class="inline-block py-6 px-10 border border-white/10 rounded-sm">
+                                                <span
+                                                    class="block font-cormorant text-[#D4AF37] text-3xl italic mb-2">Grand
+                                                    Lunch</span>
+                                                <span
+                                                    class="block font-montserrat text-white/40 text-[8px] uppercase tracking-[0.4em]">Served
+                                                    at Midday</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guest List -->
+        <section id="guestlist" class="py-20 md:py-32 bg-[#FBFAF7] relative">
+            <div class="w-full px-6 md:px-12 lg:px-24" <div class="max-w-7xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-16 md:mb-20">
+                    <h2 class="font-cormorant text-5xl md:text-7xl mb-4 italic"><span
+                            class="text-[#3B0764]">Cherished</span> <span class="text-[#D4AF37]">Circle</span></h2>
+                    <p class="font-montserrat text-[10px] uppercase tracking-[0.6em] text-[#D4AF37]">Our Beloved
+                        Community</p>
+                    <div class="mt-8 flex justify-center">
+                        <input type="text" id="guest-search" placeholder="Search by name..."
+                            class="w-full max-w-md border-b border-[#3B0764]/20 py-2 font-cormorant text-xl md:text-2xl outline-none placeholder:text-slate-200 bg-transparent text-[#3B0764] text-center focus:border-[#D4AF37] transition-colors">
+                    </div>
+                </div>
+
+                <!-- Integrated Column Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 relative" id="guest-sections">
+                    <!-- Subtle Vertical Dividers (Desktop) -->
+                    <div
+                        class="hidden md:block absolute left-1/3 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#D4AF37]/20 to-transparent">
+                    </div>
+                    <div
+                        class="hidden md:block absolute left-2/3 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#D4AF37]/20 to-transparent">
+                    </div>
+
+                    <!-- Column 1: The Elders -->
+                    <div class="space-y-10">
+                        <div class="text-center space-y-2">
+                            <h4 class="font-montserrat text-[9px] uppercase tracking-[0.4em] text-[#D4AF37]">The Elders
+                            </h4>
+                            <h3 class="font-cormorant text-[#3B0764] text-3xl md:text-4xl italic">Parents & Sponsors
+                            </h3>
+                        </div>
+                        <div class="space-y-8 text-center md:text-left px-4">
+                            <div class="space-y-3">
+                                <p
+                                    class="font-montserrat text-[#D4AF37] font-bold text-[7px] uppercase tracking-widest">
+                                    Together with their Parents</p>
+                                <div class="space-y-1 font-cormorant text-lg text-[#3B0764]">
+                                    <div>Ptr. Marlon Pontino & Mrs. Grethel Pontino</div>
+                                    <div>Mr. Renato Cadiz & Mrs. Jean Cadiz</div>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <p
+                                    class="font-montserrat text-[#D4AF37] font-bold text-[7px] uppercase tracking-widest">
+                                    Principal Sponsors</p>
+                                <div class="grid gap-2 font-cormorant text-base text-[#3B0764]/80">
+                                    <div>Ptr. Artimon Pacheo</div>
+                                    <div>Ptr. Jaime Garfil</div>
+                                    <div>Mr. Herzy Alpas</div>
+                                    <div>Mrs. Judy Ann Ymalay</div>
+                                    <div>Mrs. Inocencia G. Gelaver</div>
+                                    <div>Mrs. Henrieza R. Pestijo</div>
+                                    <div>Mrs. Ma. Loriebelle D. Cenidoza</div>
+                                    <div>Mrs. Ma. Morena De Pedro</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 2: The Entourage -->
+                    <div class="space-y-10">
+                        <div class="text-center space-y-2">
+                            <h4 class="font-montserrat text-[9px] uppercase tracking-[0.4em] text-[#D4AF37]">The
+                                Entourage</h4>
+                            <h3 class="font-cormorant text-[#3B0764] text-3xl md:text-4xl italic">Wedding Party</h3>
+                        </div>
+                        <div class="space-y-8 text-center md:text-left px-4">
+                            <div class="space-y-3">
+                                <p
+                                    class="font-montserrat text-[#D4AF37] font-bold text-[7px] uppercase tracking-widest">
+                                    Best Man & Maid of Honor</p>
+                                <div class="space-y-3 font-cormorant text-lg text-[#3B0764]">
+                                    <div>Mr. Timothy Pontino <span
+                                            class="text-[8px] text-[#D4AF37] font-montserrat uppercase tracking-tighter ml-2">Best
+                                            Man</span></div>
+                                    <div>Ms. Elizabeth Maquiling <span
+                                            class="text-[8px] text-[#D4AF37] font-montserrat uppercase tracking-tighter ml-2">Maid
+                                            of Honor</span></div>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <p
+                                    class="font-montserrat text-[#D4AF37] font-bold text-[7px] uppercase tracking-widest">
+                                    Entourage (Bearers)</p>
+                                <div class="space-y-3 font-cormorant text-lg text-[#3B0764]">
+                                    <div>Gian Emman Alonsagay <span
+                                            class="text-[8px] text-[#D4AF37] font-montserrat uppercase tracking-tighter ml-2">Coin
+                                            Bearer</span></div>
+                                    <div>Juan Alee Alpas <span
+                                            class="text-[8px] text-[#D4AF37] font-montserrat uppercase tracking-tighter ml-2">Ring
+                                            Bearer</span></div>
+                                    <div>Jeshua Agustine Alpas <span
+                                            class="text-[8px] text-[#D4AF37] font-montserrat uppercase tracking-tighter ml-2">Bible
+                                            Bearer</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Column 3: Sacred Rites -->
+                    <div class="space-y-10">
+                        <div class="text-center space-y-2">
+                            <h4 class="font-montserrat text-[9px] uppercase tracking-[0.4em] text-[#D4AF37]">Sacred
+                                Rites</h4>
+                            <h3 class="font-cormorant text-[#3B0764] text-3xl md:text-4xl italic">Secondary Sponsors
+                            </h3>
+                        </div>
+                        <div class="space-y-8 text-center md:text-left px-4">
+                            <div class="space-y-3">
+                                <p
+                                    class="font-montserrat text-[#D4AF37] font-bold text-[7px] uppercase tracking-widest">
+                                    Candle, Veil & Cord</p>
+                                <div class="space-y-3 font-cormorant text-lg text-[#3B0764]">
+                                    <div>Mr. Hernie Alpas & Mrs. Nelle Irene Alpas <span
+                                            class="text-[8px] text-[#D4AF37] font-montserrat uppercase tracking-tighter ml-2">Candle</span>
+                                    </div>
+                                    <div>Ptr. Hansel Apas & Mrs. Ruth Alpas <span
+                                            class="text-[8px] text-[#D4AF37] font-montserrat uppercase tracking-tighter ml-2">Veil</span>
+                                    </div>
+                                    <div>Ptr. Romeo Gayanelo Jr. & Mrs. Nemcy Gayanelo <span
+                                            class="text-[8px] text-[#D4AF37] font-montserrat uppercase tracking-tighter ml-2">Cord</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <p
+                                    class="font-montserrat text-[#D4AF37] font-bold text-[7px] uppercase tracking-widest">
+                                    Flower Lolas</p>
+                                <div class="grid gap-1 font-cormorant text-lg text-[#3B0764]">
+                                    <div>Mrs. Merle Pontino</div>
+                                    <div>Mrs. Conchita Garfil</div>
+                                    <div>Mrs. Zenaida Alpas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+
+    </div> <!-- End Main Content-->
+
+    <!-- Official Footer: Celestial Edition -->
+    <footer class="w-full py-16 bg-[#0F041A] text-white relative overflow-hidden border-t border-white/5 mt-auto">
+        <div class="px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-12 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+                <span class="font-cormorant text-3xl md:text-4xl tracking-widest text-white/90">Nathaniel <span
+                        class="italic text-[#D4AF37]">&</span> REA</span>
+                <div class="hidden md:block w-16 h-[1px] bg-[#D4AF37]/20"></div>
+            </div>
+            <div class="space-y-4 text-center md:text-right">
+                <p class="font-montserrat text-[10px] uppercase tracking-[0.6em] text-white/30">
+                    EST. MAY 2026 • THE SACRED UNION
+                </p>
+                <p class="font-montserrat text-[8px] uppercase tracking-[0.4em] text-[#D4AF37] opacity-40 italic">
+                    Infinite Love • Eternal Grace
+                </p>
+            </div>
+        </div>
+        <!-- Subtle Background Glow -->
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-[#3B0764]/10 blur-[100px] rounded-full"></div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
