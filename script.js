@@ -189,9 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let isPlaying = false;
 
     const playlist = [
-        "songs/goodness_of_god.mp3",
-        "songs/dakilang_katapatan.mp3",
-        "songs/10000_reasons.mp3"
+        "songs/Arbor North - You, Me, and Jesus (Official Lyric Video).mp3",
+        "songs/John Waller - The Marriage Prayer lyrics.mp3",
+        "songs/The Blessing with Kari Jobe & Cody Carnes _ Live From Elevation Ballantyne _ Elevation Worship.mp3"
     ];
     let currentSongIndex = parseInt(sessionStorage.getItem('music_index')) || 0;
 
