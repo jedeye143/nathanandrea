@@ -349,8 +349,7 @@ footer {
 
 /* Navigation Blend */
 #navbar {
-    mix-blend-mode: exclusion;
-    color: white;
+    color: #0F041A;
 }
 
 #navbar.scrolled {

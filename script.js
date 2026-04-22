@@ -2,39 +2,33 @@ window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     const mainContent = document.getElementById('main-content');
     const burst = document.getElementById('radiant-burst');
-    const enterPrompt = document.getElementById('enter-prompt');
-    const enterBtn = document.getElementById('enter-btn');
 
-    // Show the button after the sacred verse animation
-    if (enterPrompt) {
+    // Music and Reveal trigger on any click
+    const startJourney = () => {
+        if (burst) burst.style.opacity = '1';
+        
+        // Trigger music immediately on user gesture
+        if (typeof playMusic === 'function') {
+            playMusic();
+        }
+
         setTimeout(() => {
-            enterPrompt.classList.remove('opacity-0', 'scale-90');
-            enterPrompt.classList.add('opacity-100', 'scale-100');
-        }, 2000); // Show button earlier for better UX
-    }
-
-    if (enterBtn) {
-        enterBtn.addEventListener('click', () => {
-            // Trigger music immediately on user gesture
-            if (typeof playMusic === 'function') {
-                playMusic();
-            } else {
-                const music = document.getElementById('bg-music');
-                if (music) music.play().catch(e => console.log("Play deferred"));
-            }
-
-            // Start the reveal sequence
-            if (burst) burst.style.opacity = '1';
+            if (mainContent) mainContent.style.opacity = '1';
+            if (loader) loader.style.opacity = '0';
             
             setTimeout(() => {
-                if (mainContent) mainContent.style.opacity = '1';
-                if (loader) loader.style.opacity = '0';
-                
-                setTimeout(() => {
-                    if (loader) loader.style.display = 'none';
-                }, 1500);
-            }, 1000); // Peak of the light burst
-        });
+                if (loader) loader.style.display = 'none';
+            }, 1500);
+        }, 1000);
+        
+        // Clean up listeners
+        window.removeEventListener('click', startJourney);
+        window.removeEventListener('touchstart', startJourney);
+    };
+
+    if (loader) {
+        window.addEventListener('click', startJourney);
+        window.addEventListener('touchstart', startJourney);
     }
 });
 
@@ -44,29 +38,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursor = document.getElementById('custom-cursor');
     const outline = document.getElementById('custom-cursor-outline');
 
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
+    if (cursor) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-        cursor.style.transform = `translate(${posX}px, ${posY}px)`;
-        
-        outline.animate({
-            transform: `translate(${posX - 12}px, ${posY - 12}px)`
-        }, { duration: 600, fill: "forwards" });
-    });
+            cursor.style.transform = `translate(${posX}px, ${posY}px)`;
+            
+            if (outline) {
+                outline.animate({
+                    transform: `translate(${posX - 12}px, ${posY - 12}px)`
+                }, { duration: 600, fill: "forwards" });
+            }
+        });
 
-    // Cursor hover effects
-    const links = document.querySelectorAll('a, button, input, .guest-name');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            cursor.style.transform += ' scale(4)';
-            outline.style.borderColor = 'white';
+        // Cursor hover effects
+        const links = document.querySelectorAll('a, button, input, .guest-name');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.style.transform += ' scale(4)';
+                if (outline) outline.style.borderColor = 'white';
+            });
+            link.addEventListener('mouseleave', () => {
+                cursor.style.transform = cursor.style.transform.replace(' scale(4)', '');
+                if (outline) outline.style.borderColor = '#D4AF37';
+            });
         });
-        link.addEventListener('mouseleave', () => {
-            cursor.style.transform = cursor.style.transform.replace(' scale(4)', '');
-            outline.style.borderColor = '#D4AF37';
-        });
-    });
+    }
 
     // 2. Countdown Logic
     const targetDate = new Date('May 16, 2026 09:00:00').getTime();
@@ -153,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Dynamic Image Grayscale on Scroll (ONLY ON INDEX PAGE)
         if (window.location.pathname === '/' || window.location.pathname.includes('index.html')) {
-            const allImages = document.querySelectorAll('img:not(#story img, #gallery img, .interactive-img)');
+            const allImages = document.querySelectorAll('img:not(#story img, #gallery img, #attire img, .interactive-img)');
             allImages.forEach(img => {
                 if (scrolled > 200) {
                     img.classList.add('grayscale-scroll');
@@ -195,29 +193,44 @@ document.addEventListener('DOMContentLoaded', () => {
         "songs/dakilang_katapatan.mp3",
         "songs/10000_reasons.mp3"
     ];
-    let currentSongIndex = 0;
+    let currentSongIndex = parseInt(sessionStorage.getItem('music_index')) || 0;
 
     // Initialize immediately
     if (music) {
         music.src = playlist[currentSongIndex];
         music.load();
         
+        // Restore time if exists
+        const savedTime = parseFloat(sessionStorage.getItem('music_time'));
+        if (savedTime) {
+            music.currentTime = savedTime;
+        }
+
         music.onerror = () => {
             console.error("Audio Load Error on: " + music.src);
             playNext();
         };
+
+        // Continually save time for persistence
+        music.addEventListener('timeupdate', () => {
+            sessionStorage.setItem('music_time', music.currentTime);
+            sessionStorage.setItem('music_index', currentSongIndex);
+        });
     }
 
     const playMusic = () => {
         if (!music) return;
         music.play().then(() => {
             isPlaying = true;
+            sessionStorage.setItem('music_playing', 'true');
             if (musicBtn) {
                 musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
                 musicBtn.classList.add('animate-pulse');
             }
         }).catch(e => {
-            console.warn("Playback failed:", e);
+            console.warn("Playback waiting for interaction...");
+            // Keep state as 'true' so it resumes on first gesture
+            sessionStorage.setItem('music_playing', 'true');
         });
     };
 
@@ -225,6 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!music) return;
         music.pause();
         isPlaying = false;
+        sessionStorage.setItem('music_playing', 'false');
         if (musicBtn) {
             musicBtn.innerHTML = '<i class="fa-solid fa-music"></i>';
             musicBtn.classList.remove('animate-pulse');
@@ -239,6 +253,14 @@ document.addEventListener('DOMContentLoaded', () => {
         playMusic();
     };
 
+    // Global reveal trigger for auto-resume
+    window.resumeMusic = () => {
+        const wasPlaying = sessionStorage.getItem('music_playing') !== 'false'; // Default to true for first load
+        if (wasPlaying) {
+            playMusic();
+        }
+    };
+
     if (musicBtn && music) {
         musicBtn.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -251,11 +273,22 @@ document.addEventListener('DOMContentLoaded', () => {
             document.removeEventListener('click', startOnInteraction);
             document.removeEventListener('scroll', startOnInteraction);
             document.removeEventListener('touchstart', startOnInteraction);
+            document.removeEventListener('mousemove', startOnInteraction);
+            document.removeEventListener('keydown', startOnInteraction);
         };
 
+        // Aggressive interaction triggers to satisfy browser autoplay policies
         document.addEventListener('click', startOnInteraction);
         document.addEventListener('scroll', startOnInteraction);
         document.addEventListener('touchstart', startOnInteraction);
+        document.addEventListener('mousemove', startOnInteraction);
+        document.addEventListener('keydown', startOnInteraction);
+
+        // Make the loader itself a trigger area
+        const loader = document.getElementById('loader');
+        if (loader) {
+            loader.addEventListener('click', startOnInteraction);
+        }
 
         music.addEventListener('ended', playNext);
     }
