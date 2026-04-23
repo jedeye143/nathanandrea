@@ -129,10 +129,13 @@
             <div
                 class="hidden md:flex space-x-12 font-montserrat text-[10px] uppercase tracking-[0.5em] font-bold text-[#3B0764]">
                 <a href="#hero" class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Invited</a>
-                <a href="#profiles" class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Union</a>
+                <a href="#profiles"
+                    class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Union</a>
                 <a href="gallery.html" class="hover:opacity-50 transition-all duration-300 relative pb-2">Gallery</a>
-                <a href="#details" class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Gathering</a>
-                <a href="#guestlist" class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Circle</a>
+                <a href="#details"
+                    class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Gathering</a>
+                <a href="#guestlist"
+                    class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Circle</a>
             </div>
             <button id="mobile-menu-btn" class="md:hidden text-2xl text-[#3B0764] relative z-[101]"><i
                     class="fa-solid fa-bars-staggered"></i></button>
@@ -200,19 +203,24 @@
                         class="font-cormorant text-slate-400 text-lg md:text-3xl italic mb-12 md:mb-16 max-w-xl mx-auto md:mx-0 leading-relaxed">
                         "Where the ocean meets the sky, our forever begins."
                     </p>
-                    <div class="space-y-10 mb-20">
-                        <div class="flex flex-col space-y-5">
+                    <div class="space-y-10 mb-20 flex flex-col items-center md:items-start">
+                        <div class="inline-flex flex-col items-start space-y-3">
+                            <!-- Date Row -->
                             <div class="flex items-center space-x-6">
-                                <div class="w-12 h-[1px] bg-[#D4AF37]/30"></div>
+                                <div class="w-12 h-[1px] bg-[#D4AF37] opacity-60"></div>
                                 <p
-                                    class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#3B0764] font-bold">
+                                    class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#3B0764] font-bold whitespace-nowrap">
                                     May 16th, 2026 • 10:00 AM
                                 </p>
                             </div>
-                            <p
-                                class="font-montserrat text-slate-400 text-[10px] md:text-[12px] uppercase tracking-[0.5em] pl-18 md:pl-[4.5rem]">
-                                Nana's Place, Bago City
-                            </p>
+                            <!-- Venue Row -->
+                            <div class="flex items-center space-x-6">
+                                <div class="w-12 h-0"></div> <!-- Structural Spacer -->
+                                <p
+                                    class="font-montserrat text-slate-400 text-[10px] md:text-[12px] uppercase tracking-[0.5em] whitespace-nowrap">
+                                    Nana's Place, Bago City
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div
@@ -287,8 +295,7 @@
                     <span
                         class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.2em] font-bold block mb-6">Chapter
                         I</span>
-                    <h2
-                        class="font-playfair text-[#3B0764] text-5xl md:text-7xl lg:text-8xl leading-[0.8] mb-10">
+                    <h2 class="font-playfair text-[#3B0764] text-5xl md:text-7xl lg:text-8xl leading-[0.8] mb-10">
                         Getting to Know <br>
                         <span class="italic text-[#D4AF37]">the Groom & Bride</span>
                     </h2>
@@ -363,31 +370,39 @@
                             <div class="lg:col-span-7 space-y-16">
                                 <div class="relative group">
                                     <!-- Thumbtack Pin -->
-                                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 z-20 text-[#3B0764]/20 group-hover:text-[#D4AF37] transition-colors duration-500">
+                                    <div
+                                        class="absolute -top-6 left-1/2 -translate-x-1/2 z-20 text-[#3B0764]/20 group-hover:text-[#D4AF37] transition-colors duration-500">
                                         <i class="fa-solid fa-thumbtack text-3xl rotate-45"></i>
                                     </div>
-                                    <div class="bg-[#FFFDF5] p-12 md:p-16 shadow-2xl border border-[#D4AF37]/10 relative -rotate-1 group-hover:rotate-0 transition-all duration-700 overflow-hidden">
+                                    <div
+                                        class="bg-[#FFFDF5] p-12 md:p-16 shadow-2xl border border-[#D4AF37]/10 relative -rotate-1 group-hover:rotate-0 transition-all duration-700 overflow-hidden">
                                         <!-- Paper Texture -->
-                                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
-                                        
-                                        <h4 class="font-playfair text-[#3B0764] text-4xl md:text-5xl mb-12 border-b border-[#D4AF37]/20 pb-6 relative z-10">
+                                        <div
+                                            class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]">
+                                        </div>
+
+                                        <h4
+                                            class="font-playfair text-[#3B0764] text-4xl md:text-5xl mb-12 border-b border-[#D4AF37]/20 pb-6 relative z-10">
                                             The Fact Sheet</h4>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 relative z-10">
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Fullname</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Rea Joy Garfil
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Rea Joy
+                                                    Garfil
                                                     Cadiz</p>
                                             </div>
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Birthday</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Nov 07, 1995</p>
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Nov 07, 1995
+                                                </p>
                                             </div>
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Siblings</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Middle Child of
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Middle Child
+                                                    of
                                                     3</p>
                                             </div>
                                             <div class="space-y-2">
@@ -399,7 +414,8 @@
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Age</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">30 Years Old</p>
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">30 Years Old
+                                                </p>
                                             </div>
                                             <div class="space-y-2">
                                                 <span
@@ -439,48 +455,59 @@
                             <div class="lg:col-span-7 space-y-16 order-2 lg:order-1">
                                 <div class="relative group">
                                     <!-- Thumbtack Pin -->
-                                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 z-20 text-[#3B0764]/20 group-hover:text-[#D4AF37] transition-colors duration-500">
+                                    <div
+                                        class="absolute -top-6 left-1/2 -translate-x-1/2 z-20 text-[#3B0764]/20 group-hover:text-[#D4AF37] transition-colors duration-500">
                                         <i class="fa-solid fa-thumbtack text-3xl rotate-[30deg]"></i>
                                     </div>
-                                    <div class="bg-[#FFFDF5] p-12 md:p-16 shadow-2xl border border-[#D4AF37]/10 relative rotate-1 group-hover:rotate-0 transition-all duration-700 overflow-hidden">
+                                    <div
+                                        class="bg-[#FFFDF5] p-12 md:p-16 shadow-2xl border border-[#D4AF37]/10 relative rotate-1 group-hover:rotate-0 transition-all duration-700 overflow-hidden">
                                         <!-- Paper Texture -->
-                                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
-                                        
-                                        <h4 class="font-playfair text-[#3B0764] text-4xl md:text-5xl mb-12 border-b border-[#D4AF37]/20 pb-6 relative z-10">
+                                        <div
+                                            class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]">
+                                        </div>
+
+                                        <h4
+                                            class="font-playfair text-[#3B0764] text-4xl md:text-5xl mb-12 border-b border-[#D4AF37]/20 pb-6 relative z-10">
                                             The Fact Sheet</h4>
                                         <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 relative z-10">
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Fullname</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Nathaniel James
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Nathaniel
+                                                    James
                                                     Alpas Pontino</p>
                                             </div>
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Birthday</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Sept 10, 1997
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Sept 10,
+                                                    1997
                                                 </p>
                                             </div>
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Siblings</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Eldest of 3</p>
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Eldest of 3
+                                                </p>
                                             </div>
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Status</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Gentleman</p>
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Gentleman
+                                                </p>
                                             </div>
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Age</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">28 Years Old</p>
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">28 Years Old
+                                                </p>
                                             </div>
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Favorite
                                                     Flavor</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Strawberry</p>
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Strawberry
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -539,22 +566,22 @@
             </div>
 
             <div class="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
-                <div class="flex flex-col lg:flex-row gap-24 md:gap-32 items-center">
+                <div class="flex flex-col lg:flex-row gap-16 lg:gap-32 items-center">
 
                     <!-- Left: Cinematic Image Composition -->
-                    <div class="w-full lg:w-1/2 relative group">
+                    <div class="w-full lg:w-1/2 relative group px-4 md:px-0">
                         <!-- Floating Golden Frames -->
                         <div
-                            class="absolute -top-10 -right-10 w-3/4 h-3/4 border-t border-r border-[#D4AF37]/30 transition-transform duration-1000 group-hover:translate-x-4 group-hover:-translate-y-4">
+                            class="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-3/4 h-3/4 border-t border-r border-[#D4AF37]/30 transition-transform duration-1000 group-hover:translate-x-4 group-hover:-translate-y-4">
                         </div>
                         <div
-                            class="absolute -bottom-10 -left-10 w-1/2 h-1/2 border-b border-l border-[#D4AF37] transition-transform duration-1000 group-hover:-translate-x-4 group-hover:translate-y-4">
+                            class="absolute -bottom-6 -left-6 md:-bottom-10 md:-left-10 w-1/2 h-1/2 border-b border-l border-[#D4AF37] transition-transform duration-1000 group-hover:-translate-x-4 group-hover:translate-y-4">
                         </div>
 
                         <!-- Main Image with Solid Purple Backing -->
-                        <div class="relative z-10">
+                        <div class="relative z-10 max-w-lg mx-auto lg:max-w-none">
                             <div
-                                class="absolute inset-0 bg-[#3B0764] rounded-sm translate-x-6 translate-y-6 opacity-20">
+                                class="absolute inset-0 bg-[#3B0764] rounded-sm translate-x-4 translate-y-4 md:translate-x-6 md:translate-y-6 opacity-20">
                             </div>
                             <div
                                 class="relative overflow-hidden rounded-sm border border-white/5 shadow-2xl bg-[#1A042C]">
@@ -567,13 +594,13 @@
 
                         <!-- Abstract "Story" Label -->
                         <div
-                            class="absolute -top-24 -left-12 font-cormorant text-8xl md:text-[14rem] text-white/5 select-none italic z-0 tracking-tighter">
+                            class="absolute -top-16 -left-6 md:-top-24 md:-left-12 font-cormorant text-7xl md:text-[14rem] text-white/5 select-none italic z-0 tracking-tighter">
                             Story
                         </div>
                     </div>
 
                     <!-- Right: The Narrative -->
-                    <div class="w-full lg:w-1/2 text-center lg:text-left space-y-12">
+                    <div class="w-full lg:w-1/2 text-center lg:text-left space-y-8 md:space-y-12">
                         <div class="space-y-6">
                             <div class="inline-flex items-center space-x-4 opacity-60">
                                 <span class="h-[1px] w-8 bg-[#D4AF37]"></span>
@@ -581,14 +608,14 @@
                                     class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.6em] text-[#D4AF37] font-bold">
                                     The Union</h4>
                             </div>
-                            <h2 class="font-playfair text-white text-5xl md:text-8xl leading-[0.9] mb-8">
-                                A Symphony <br>
+                            <h2 class="font-playfair text-white text-4xl md:text-6xl lg:text-8xl leading-[1.1] lg:leading-[0.9] mb-8">
+                                A Symphony <br class="hidden md:block">
                                 <span class="italic text-[#D4AF37]">of Two Souls</span>
                             </h2>
                         </div>
 
                         <p
-                            class="font-cormorant text-xl md:text-3xl leading-relaxed text-[#FBFAF7] italic max-w-xl mx-auto lg:mx-0">
+                            class="font-cormorant text-lg md:text-2xl lg:text-3xl leading-relaxed text-[#FBFAF7] italic max-w-xl mx-auto lg:mx-0">
                             "Though we were familiar faces from the same youth camp years ago, we remained
                             unacquainted until a simple chat in 2023 changed everything. Without an official
                             anniversary or grand gestures, we found home in the quietest of questions and the most
@@ -619,7 +646,8 @@
                             <a href="#gallery"
                                 class="inline-flex items-center space-x-6 group/link text-[#FBFAF7]/80 hover:text-[#D4AF37] transition-colors">
                                 <span
-                                    class="font-montserrat text-[11px] uppercase tracking-[0.5em] border-b border-[#FBFAF7]/20 pb-1 group-hover/link:border-[#D4AF37]">Explore Our Memories</span>
+                                    class="font-montserrat text-[11px] uppercase tracking-[0.5em] border-b border-[#FBFAF7]/20 pb-1 group-hover/link:border-[#D4AF37]">Explore
+                                    Our Memories</span>
                                 <i
                                     class="fa-solid fa-arrow-right-long text-[12px] group-hover/link:translate-x-4 transition-transform"></i>
                             </a>
@@ -760,8 +788,7 @@
                     <span
                         class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.2em] font-bold block mb-8">Chapter
                         II</span>
-                    <h2
-                        class="font-playfair text-[#3B0764] text-5xl md:text-7xl lg:text-8xl leading-[0.8] mb-10">
+                    <h2 class="font-playfair text-[#3B0764] text-5xl md:text-7xl lg:text-8xl leading-[0.8] mb-10">
                         Two Becoming <br>
                         <span class="italic text-[#D4AF37]">One</span>
                     </h2>
@@ -780,69 +807,102 @@
         <section id="details" class="py-24 md:py-40 bg-[#3B0764] relative overflow-hidden">
             <!-- Architectural Layers -->
             <div class="absolute inset-0 z-0 pointer-events-none opacity-20">
-                <div class="absolute top-0 right-0 w-[1000px] h-[1000px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                <div class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[150px] rounded-full translate-y-1/2 -translate-x-1/2"></div>
+                <div
+                    class="absolute top-0 right-0 w-[1000px] h-[1000px] bg-[#D4AF37]/10 blur-[200px] rounded-full -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[150px] rounded-full translate-y-1/2 -translate-x-1/2">
+                </div>
                 <!-- Subtle Grid/Line Pattern -->
-                <div class="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.05)_1px,transparent_1px)] bg-[size:100px_100px]"></div>
+                <div
+                    class="absolute inset-0 bg-[linear-gradient(rgba(212,175,55,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(212,175,55,0.05)_1px,transparent_1px)] bg-[size:100px_100px]">
+                </div>
             </div>
 
             <!-- Massive Background Number "16" -->
-            <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none select-none">
-                <span class="font-playfair text-[20rem] md:text-[40rem] lg:text-[50rem] text-white/[0.02] leading-none tracking-tighter">16</span>
+            <div
+                class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-none select-none">
+                <span
+                    class="font-playfair text-[20rem] md:text-[40rem] lg:text-[50rem] text-white/[0.02] leading-none tracking-tighter">16</span>
             </div>
 
             <div class="container mx-auto px-6 md:px-12 lg:px-24 relative z-10">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-32 items-center">
-                    
+
                     <!-- LEFT: THE TIME PIECE -->
                     <div class="relative group" data-aos="fade-right">
                         <div class="space-y-12">
                             <div class="relative inline-block">
-                                <span class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.5em] font-bold block mb-4">Chapter III</span>
-                                <h2 class="font-playfair text-white text-6xl md:text-9xl leading-[0.8] mb-4 italic">The <span class="text-[#D4AF37]">Moment</span></h2>
+                                <span
+                                    class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.5em] font-bold block mb-4">The
+                                    Schedule</span>
+                                <h2 class="font-playfair text-white text-6xl md:text-9xl leading-[0.8] mb-4 italic">The
+                                    <span class="text-[#D4AF37]">Moment</span>
+                                </h2>
                                 <div class="w-24 h-[1px] bg-gradient-to-r from-[#D4AF37] to-transparent"></div>
                             </div>
 
                             <div class="relative">
                                 <!-- Glassmorphic Time Card (Matched with Venue Card) -->
-                                <div class="bg-gradient-to-br from-[#1A042C] to-[#3B0764] border border-white/10 p-12 md:p-20 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] group-hover:border-[#D4AF37]/40 transition-all duration-1000 relative overflow-hidden">
+                                <div
+                                    class="bg-gradient-to-br from-[#1A042C] to-[#3B0764] border border-white/10 p-12 md:p-20 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] group-hover:border-[#D4AF37]/40 transition-all duration-1000 relative overflow-hidden">
                                     <!-- Inner Glow -->
-                                    <div class="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-                                    
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                                    </div>
+
                                     <div class="relative z-10 space-y-16">
                                         <div class="flex items-start justify-between">
                                             <div class="space-y-4">
-                                                <p class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[0.6em]">Date</p>
-                                                <h3 class="font-cormorant text-white text-5xl md:text-8xl font-bold tracking-tight">May 16 <span class="text-3xl md:text-4xl font-light text-white/40 block mt-2">Saturday, 2026</span></h3>
+                                                <p
+                                                    class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[0.6em]">
+                                                    Date</p>
+                                                <h3
+                                                    class="font-cormorant text-white text-5xl md:text-8xl font-bold tracking-tight">
+                                                    May 16 <span
+                                                        class="text-3xl md:text-4xl font-light text-white/40 block mt-2">Saturday,
+                                                        2026</span></h3>
                                             </div>
-                                            <i class="fa-solid fa-calendar-day text-[#D4AF37]/20 text-6xl rotate-12"></i>
+                                            <i
+                                                class="fa-solid fa-calendar-day text-[#D4AF37]/20 text-6xl rotate-12"></i>
                                         </div>
 
                                         <div class="flex items-start justify-between border-t border-white/10 pt-16">
                                             <div class="space-y-4">
-                                                <p class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[0.6em]">Time</p>
-                                                <h3 class="font-cormorant text-white text-5xl md:text-8xl italic">10:00 <span class="text-3xl md:text-4xl font-light text-white/40">AM</span></h3>
+                                                <p
+                                                    class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[0.6em]">
+                                                    Time</p>
+                                                <h3 class="font-cormorant text-white text-5xl md:text-8xl italic">10:00
+                                                    <span
+                                                        class="text-3xl md:text-4xl font-light text-white/40">AM</span>
+                                                </h3>
                                             </div>
                                             <i class="fa-solid fa-clock text-[#D4AF37]/20 text-6xl -rotate-12"></i>
                                         </div>
 
                                         <!-- Add to Calendar Action -->
                                         <div class="pt-8">
-                                            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Nathaniel+James+%26+Rea+Joy+%7C+Sacred+Union&dates=20260516T100000/20260516T160000&details=Join+us+for+the+celebration+of+our+Sacred+Union!&location=Nana's+Place,+Bago+City&sf=true&output=xml" 
-                                               target="_blank"
-                                               class="group/btn relative w-full inline-flex items-center justify-center py-6 bg-transparent border border-[#D4AF37] text-[#D4AF37] font-montserrat text-[10px] md:text-[11px] uppercase tracking-[0.6em] font-bold overflow-hidden transition-all duration-500 hover:text-[#3B0764] shadow-[0_0_20px_rgba(212,175,55,0.1)] hover:shadow-[#D4AF37]/30">
+                                            <a href="https://www.google.com/calendar/render?action=TEMPLATE&text=Nathaniel+James+%26+Rea+Joy+%7C+Sacred+Union&dates=20260516T100000/20260516T160000&details=Join+us+for+the+celebration+of+our+Sacred+Union!&location=Nana's+Place,+Bago+City&sf=true&output=xml"
+                                                target="_blank"
+                                                class="group/btn relative w-full inline-flex items-center justify-center py-6 bg-transparent border border-[#D4AF37] text-[#D4AF37] font-montserrat text-[10px] md:text-[11px] uppercase tracking-[0.6em] font-bold overflow-hidden transition-all duration-500 hover:text-[#3B0764] shadow-[0_0_20px_rgba(212,175,55,0.1)] hover:shadow-[#D4AF37]/30">
                                                 <span class="relative z-10 flex items-center gap-4">
                                                     <i class="fa-solid fa-calendar-plus text-sm"></i>
                                                     Add to Calendar
                                                 </span>
-                                                <div class="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
+                                                <div
+                                                    class="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500">
+                                                </div>
                                             </a>
                                         </div>
                                     </div>
 
                                     <!-- Animated Corner Accents -->
-                                    <div class="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/50 group-hover:w-32 group-hover:h-32 transition-all duration-1000"></div>
-                                    <div class="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/50 group-hover:w-32 group-hover:h-32 transition-all duration-1000"></div>
+                                    <div
+                                        class="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/50 group-hover:w-32 group-hover:h-32 transition-all duration-1000">
+                                    </div>
+                                    <div
+                                        class="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-[#D4AF37]/0 group-hover:border-[#D4AF37]/50 group-hover:w-32 group-hover:h-32 transition-all duration-1000">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -852,44 +912,60 @@
                     <div class="relative group" data-aos="fade-left">
                         <div class="space-y-12">
                             <div class="relative inline-block w-full text-right">
-                                <span class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.5em] font-bold block mb-4">The Destination</span>
-                                <h2 class="font-playfair text-white text-6xl md:text-9xl leading-[0.8] mb-4 italic">The <span class="text-[#D4AF37]">Venue</span></h2>
+                                <span
+                                    class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.5em] font-bold block mb-4">The
+                                    Destination</span>
+                                <h2 class="font-playfair text-white text-6xl md:text-9xl leading-[0.8] mb-4 italic">The
+                                    <span class="text-[#D4AF37]">Venue</span>
+                                </h2>
                                 <div class="w-24 h-[1px] bg-gradient-to-l from-[#D4AF37] to-transparent ml-auto"></div>
                             </div>
 
                             <div class="relative">
                                 <!-- Venue Invitation Card -->
-                                <div class="bg-gradient-to-br from-[#1A042C] to-[#3B0764] border border-white/10 p-6 md:p-10 shadow-2xl relative overflow-hidden group-hover:shadow-[#D4AF37]/5 transition-all duration-1000">
+                                <div
+                                    class="bg-gradient-to-br from-[#1A042C] to-[#3B0764] border border-white/10 p-6 md:p-10 shadow-2xl relative overflow-hidden group-hover:shadow-[#D4AF37]/5 transition-all duration-1000">
                                     <!-- Cinematic Image Frame -->
                                     <div class="relative overflow-hidden aspect-[4/3] group/img">
-                                        <img src="images/476334264_505539455899534_998155031224893899_n.jpg" class="w-full h-full object-cover grayscale group-hover/img:grayscale-0 group-hover/img:scale-110 transition-all duration-[5s] ease-out opacity-80 group-hover/img:opacity-100">
-                                        <div class="absolute inset-0 bg-gradient-to-t from-[#1A042C] via-transparent to-transparent"></div>
-                                        
+                                        <img src="images/476334264_505539455899534_998155031224893899_n.jpg"
+                                            class="w-full h-full object-cover grayscale group-hover/img:grayscale-0 group-hover/img:scale-110 transition-all duration-[5s] ease-out opacity-80 group-hover/img:opacity-100">
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-[#1A042C] via-transparent to-transparent">
+                                        </div>
+
                                         <!-- Floating Info Badge -->
                                         <div class="absolute bottom-8 left-8 right-8 flex justify-between items-end">
                                             <div class="space-y-2">
-                                                <h4 class="font-cormorant text-white text-3xl md:text-5xl italic">Nana's Place</h4>
-                                                <p class="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.4em]">Bago City, Negros Occidental</p>
+                                                <h4 class="font-cormorant text-white text-3xl md:text-5xl italic">Nana's
+                                                    Place</h4>
+                                                <p
+                                                    class="font-montserrat text-white/60 text-[8px] uppercase tracking-[0.4em]">
+                                                    Bago City, Negros Occidental</p>
                                             </div>
-                                            <div class="w-12 h-12 border border-white/20 flex items-center justify-center rounded-full backdrop-blur-md">
-                                                <i class="fa-solid fa-map-pin text-[#D4AF37] text-sm animate-bounce"></i>
+                                            <div
+                                                class="w-12 h-12 border border-white/20 flex items-center justify-center rounded-full backdrop-blur-md">
+                                                <i
+                                                    class="fa-solid fa-map-pin text-[#D4AF37] text-sm animate-bounce"></i>
                                             </div>
                                         </div>
                                     </div>
 
                                     <!-- Navigation Action -->
                                     <div class="mt-10 space-y-8">
-                                        <p class="font-cormorant text-white/50 text-xl md:text-2xl text-center italic px-4">
+                                        <p
+                                            class="font-cormorant text-white/50 text-xl md:text-2xl text-center italic px-4">
                                             "A serene oasis where our families gather under the witness of faith."
                                         </p>
-                                        <a href="https://www.google.com/maps/place/Nana%E2%80%99s+Place/@10.5332032,122.8253588,15z/data=!4m7!3m6!1s0x33aec7ca5b26c351:0x85480c0faa77d706!4b1!8m2!3d10.5429787!4d122.8481381!16s%2Fg%2F11svm7xw6r" 
-                                           target="_blank"
-                                           class="group/btn relative w-full inline-flex items-center justify-center py-6 bg-transparent border border-[#D4AF37] text-[#D4AF37] font-montserrat text-[10px] md:text-[11px] uppercase tracking-[0.6em] font-bold overflow-hidden transition-all duration-500 hover:text-[#3B0764] shadow-[0_0_20px_rgba(212,175,55,0.1)] hover:shadow-[#D4AF37]/30">
+                                        <a href="https://www.google.com/maps/place/Nana%E2%80%99s+Place/@10.5332032,122.8253588,15z/data=!4m7!3m6!1s0x33aec7ca5b26c351:0x85480c0faa77d706!4b1!8m2!3d10.5429787!4d122.8481381!16s%2Fg%2F11svm7xw6r"
+                                            target="_blank"
+                                            class="group/btn relative w-full inline-flex items-center justify-center py-6 bg-transparent border border-[#D4AF37] text-[#D4AF37] font-montserrat text-[10px] md:text-[11px] uppercase tracking-[0.6em] font-bold overflow-hidden transition-all duration-500 hover:text-[#3B0764] shadow-[0_0_20px_rgba(212,175,55,0.1)] hover:shadow-[#D4AF37]/30">
                                             <span class="relative z-10 flex items-center gap-4">
                                                 <i class="fa-solid fa-location-arrow text-sm"></i>
                                                 Open Navigator
                                             </span>
-                                            <div class="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
+                                            <div
+                                                class="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500">
+                                            </div>
                                         </a>
                                     </div>
                                 </div>
