@@ -334,4 +334,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 11. ScrollSpy / Active Nav Logic
+    const navLinks = document.querySelectorAll('.nav-link');
+    const spySections = document.querySelectorAll('section[id]');
+
+    function updateActiveNav() {
+        let current = "hero";
+        const threshold = 150; 
+
+        spySections.forEach((section) => {
+            const rect = section.getBoundingClientRect();
+            // If the top of the section is above the threshold
+            if (rect.top <= threshold) {
+                const sectionId = section.getAttribute("id");
+                
+                // Map sub-sections or headers to their main nav targets
+                if (sectionId === "hero") current = "hero";
+                if (sectionId === "discovery" || sectionId === "profiles" || sectionId === "story") current = "profiles";
+                if (sectionId === "gallery") current = "gallery";
+                if (sectionId === "unity" || sectionId === "details") current = "details";
+                if (sectionId === "guestlist") current = "guestlist";
+            }
+        });
+
+        navLinks.forEach((link) => {
+            const href = link.getAttribute("href");
+            if (!href) return;
+
+            // Clean state
+            link.classList.remove("text-[#D4AF37]", "border-b-2", "border-[#D4AF37]");
+            link.classList.add("text-[#3B0764]", "border-transparent");
+
+            const isGalleryMatch = (current === "gallery" && href.includes("gallery.html"));
+            
+            if (href === `#${current}` || isGalleryMatch) {
+                link.classList.remove("text-[#3B0764]", "border-transparent");
+                link.classList.add("text-[#D4AF37]", "border-b-2", "border-[#D4AF37]");
+            }
+        });
+    }
+
+    window.addEventListener("scroll", updateActiveNav);
+    updateActiveNav(); // Call on load to set initial state
+
 });
