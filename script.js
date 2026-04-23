@@ -111,18 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => observer.observe(section));
 
-    // 6. Romantic Enhancements (Petals & Sparkles)
+    // 6. Romantic Enhancements (Petals & Hearts)
     function createPetal() {
         const petal = document.createElement('div');
-        petal.innerHTML = '❀';
+        const icons = ['❀', '♥', '❤', '✿'];
+        const colors = ['#D4AF37', '#7e468f', '#a07cbd', '#b57ebe', '#EAB308'];
+        
+        petal.innerHTML = icons[Math.floor(Math.random() * icons.length)];
         petal.className = 'petal';
         petal.style.left = Math.random() * 100 + 'vw';
+        petal.style.color = colors[Math.floor(Math.random() * colors.length)];
         petal.style.animationDuration = (Math.random() * 10 + 10) + 's';
         petal.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        petal.style.opacity = (Math.random() * 0.5 + 0.3).toString();
+        
         document.body.appendChild(petal);
         setTimeout(() => petal.remove(), 20000);
     }
-    setInterval(createPetal, 3000);
+    setInterval(createPetal, 2000);
 
     function createSparkle(container) {
         const sparkle = document.createElement('div');

@@ -266,7 +266,6 @@ footer {
     top: -10vh;
     pointer-events: none;
     z-index: 1;
-    color: var(--lavender);
     font-size: 20px;
     opacity: 0;
     animation: fall linear infinite;
