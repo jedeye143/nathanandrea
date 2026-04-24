@@ -101,6 +101,12 @@
 .animate-zoom-in { animation: zoom-in 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
 .animate-fade-in { animation: fade-in 2s 0.5s forwards; }
 .animate-fade-in-delay { animation: fade-in 2s 1.2s forwards; }
+.animate-fade-in-slow { animation: fade-in-slow 2s 1.5s forwards ease-out; }
+
+@keyframes fade-in-slow {
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
 
 /* Remove old petal styles to keep it clean */
 .petal-loader { display: none; }
