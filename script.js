@@ -66,23 +66,108 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Countdown Logic
-    const targetDate = new Date('May 16, 2026 09:00:00').getTime();
+    // 2. Multi-Stage Countdown & Celebration Logic (Robust Edition)
+    // Using explicit parameters for Date to avoid parsing issues (Month is 0-indexed, so 4 = May)
+    const weddingDate = new Date(2026, 4, 16, 9, 0, 0).getTime();
+    const dayAfterWedding = new Date(2026, 4, 17, 0, 0, 0).getTime();
+    const thankYouCutoff = new Date(2026, 4, 19, 0, 0, 0).getTime(); // Hide Thank You after May 18
+
+    function triggerGrandConfetti() {
+        const duration = 25 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = { startVelocity: 45, spread: 360, ticks: 100, zIndex: 99999 };
+
+        const interval = setInterval(function() {
+            const timeLeft = animationEnd - Date.now();
+
+            if (timeLeft <= 0) {
+                return clearInterval(interval);
+            }
+
+            const particleCount = 100 * (timeLeft / duration);
+            
+            // Grand fire points
+            if (window.confetti) {
+                window.confetti({ ...defaults, particleCount, origin: { x: 0.2, y: Math.random() - 0.2 } });
+                window.confetti({ ...defaults, particleCount, origin: { x: 0.8, y: Math.random() - 0.2 } });
+                window.confetti({ ...defaults, particleCount, origin: { x: 0.5, y: Math.random() - 0.2 } });
+            }
+        }, 400);
+    }
+
+    let celebrationTriggered = false;
 
     function updateCountdown() {
         const now = new Date().getTime();
-        const difference = targetDate - now;
+        
+        const timerContainer = document.getElementById('countdown-timer');
+        const todayMessage = document.getElementById('wedding-day-message');
+        const marriedCounter = document.getElementById('married-counter');
+        const thankYouNote = document.getElementById('wedding-thank-you');
 
-        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((difference % (1000 * 60)) / 1000);
+        if (now < weddingDate) {
+            // State 1: Countdown Mode
+            const difference = weddingDate - now;
+            const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((difference % (1000 * 60)) / 1000);
 
-        if (document.getElementById('days')) {
-            document.getElementById('days').innerText = d.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
-            document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
-            document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+            if (document.getElementById('days')) {
+                document.getElementById('days').innerText = d.toString().padStart(2, '0');
+                document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+                document.getElementById('minutes').innerText = m.toString().padStart(2, '0');
+                document.getElementById('seconds').innerText = s.toString().padStart(2, '0');
+            }
+        } else if (now >= weddingDate && now < dayAfterWedding) {
+            // State 2: Wedding Day Celebration
+            if (timerContainer) timerContainer.style.display = 'none';
+            if (todayMessage) todayMessage.style.display = 'block';
+            if (marriedCounter) marriedCounter.style.display = 'none';
+
+            if (!celebrationTriggered) {
+                console.log("Wedding day detected! Triggering celebration...");
+                setTimeout(() => {
+                    if (window.confetti) triggerGrandConfetti();
+                }, 500);
+                celebrationTriggered = true;
+            }
+        } else {
+            // State 3: Happily Married (After Wedding)
+            if (timerContainer) timerContainer.style.display = 'none';
+            if (todayMessage) todayMessage.style.display = 'none';
+            if (marriedCounter) marriedCounter.style.display = 'block';
+
+            // Show/Hide Thank You Note based on 2-day window (May 17 & 18)
+            if (thankYouNote) {
+                if (now < thankYouCutoff) {
+                    thankYouNote.style.display = 'block';
+                } else {
+                    thankYouNote.style.display = 'none';
+                }
+            }
+
+            // Update Bride's Name & Status Rows (May 17 onwards)
+            const brideNameEl = document.getElementById('bride-fullname');
+            const brideStatus = document.getElementById('bride-status-row');
+            const groomStatus = document.getElementById('groom-status-row');
+
+            if (brideNameEl) brideNameEl.innerText = "Rea Joy Garfil Cadiz - Pontino";
+            if (brideStatus) brideStatus.style.display = 'block';
+            if (groomStatus) groomStatus.style.display = 'block';
+
+            const marriedSince = now - weddingDate;
+            const d = Math.floor(marriedSince / (1000 * 60 * 60 * 24));
+            const h = Math.floor((marriedSince % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((marriedSince % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((marriedSince % (1000 * 60)) / 1000);
+
+            if (document.getElementById('married-days')) {
+                document.getElementById('married-days').innerText = d.toString().padStart(2, '0');
+                document.getElementById('married-hours').innerText = h.toString().padStart(2, '0');
+                document.getElementById('married-minutes').innerText = m.toString().padStart(2, '0');
+                document.getElementById('married-seconds').innerText = s.toString().padStart(2, '0');
+            }
         }
     }
 

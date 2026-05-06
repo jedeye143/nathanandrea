@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meet the Bride and Groom (Tan & Joy)</title>
+    <title>Nathaniel James & Rea Joy | The Union</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@100;400;700&display=swap"
@@ -23,6 +23,7 @@
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <link rel="stylesheet" href="style.css">
 
     <!-- Favicon & SEO -->
@@ -151,6 +152,7 @@
                 <a href="#profiles"
                     class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Union</a>
                 <a href="gallery.html" class="hover:opacity-50 transition-all duration-300 relative pb-2">Gallery</a>
+                <!-- <a href="reminisce.html" class="hover:opacity-50 transition-all duration-300 relative pb-2">Reminisce</a> -->
                 <a href="#details"
                     class="nav-link hover:opacity-50 transition-all duration-300 relative pb-2">Gathering</a>
                 <a href="#guestlist"
@@ -175,6 +177,7 @@
                 class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Union</a>
             <a href="gallery.html"
                 class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Gallery</a>
+            <!-- <a href="reminisce.html" class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Reminisce</a> -->
             <a href="#details"
                 class="font-cormorant text-white text-5xl italic hover:text-[#D4AF37] transition-colors mobile-link">Gathering</a>
             <a href="#guestlist"
@@ -269,7 +272,8 @@
             </div>
 
             <div class="container mx-auto px-6 md:px-12 relative z-10">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 border-y border-[#3B0764]/5 py-20 md:py-32">
+                <!-- State 1: Active Countdown -->
+                <div id="countdown-timer" class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 border-y border-[#3B0764]/5 py-20 md:py-32">
                     <div class="text-center group">
                         <h3 id="days"
                             class="font-cormorant text-7xl md:text-[12rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-all duration-700">
@@ -301,6 +305,63 @@
                         <p
                             class="font-montserrat text-[10px] md:text-[12px] uppercase tracking-[0.5em] text-[#D4AF37] mt-4 font-bold">
                             Seconds</p>
+                    </div>
+                </div>
+
+                <!-- State 2: Wedding Day Celebration -->
+                <div id="wedding-day-message" class="hidden py-24 md:py-40 text-center space-y-8 animate-fade-in">
+                    <h2 class="font-playfair text-[#3B0764] text-6xl md:text-9xl italic">Today is the <span class="text-[#D4AF37]">Day!</span></h2>
+                    <p class="font-cormorant text-[#3B0764]/60 text-2xl md:text-4xl italic">Celebrating our Sacred Union.</p>
+                </div>
+
+                <!-- State 3: Happily Married Counter -->
+                <div id="married-counter" class="hidden py-32 md:py-48 text-center space-y-16 animate-fade-in relative">
+                    <div class="relative z-10 space-y-12">
+                        <div class="space-y-6">
+                            <span class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.2em] font-bold block">Our Journey to Forever Begins Here</span>
+                            <h2 class="font-playfair text-[#3B0764] text-7xl md:text-9xl italic leading-tight">Happily <span class="text-[#D4AF37]">Married</span> For:</h2>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16 max-w-5xl mx-auto py-20 border-y border-[#3B0764]/10">
+                            <div class="text-center group">
+                                <h3 id="married-days" class="font-cormorant text-8xl md:text-[10rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-colors duration-500">00</h3>
+                                <p class="font-montserrat text-[10px] uppercase tracking-[0.6em] text-[#D4AF37] mt-4 font-bold">Days</p>
+                            </div>
+                            <div class="text-center group">
+                                <h3 id="married-hours" class="font-cormorant text-8xl md:text-[10rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-colors duration-500">00</h3>
+                                <p class="font-montserrat text-[10px] uppercase tracking-[0.6em] text-[#D4AF37] mt-4 font-bold">Hours</p>
+                            </div>
+                            <div class="text-center group">
+                                <h3 id="married-minutes" class="font-cormorant text-8xl md:text-[10rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-colors duration-500">00</h3>
+                                <p class="font-montserrat text-[10px] uppercase tracking-[0.6em] text-[#D4AF37] mt-4 font-bold">Mins</p>
+                            </div>
+                            <div class="text-center group">
+                                <h3 id="married-seconds" class="font-cormorant text-8xl md:text-[10rem] font-bold text-[#3B0764] group-hover:text-[#D4AF37] transition-colors duration-500">00</h3>
+                                <p class="font-montserrat text-[10px] uppercase tracking-[0.6em] text-[#D4AF37] mt-4 font-bold">Secs</p>
+                            </div>
+                        </div>
+
+                        <!-- Refined Thank You Note -->
+                        <div id="wedding-thank-you" class="max-w-3xl mx-auto space-y-10 pt-12">
+                            <div class="w-24 h-[1px] bg-[#D4AF37] mx-auto opacity-40"></div>
+                            <p class="font-cormorant text-[#3B0764] text-3xl md:text-5xl italic leading-[1.4]">
+                                "To our family and friends, thank you for weaving your love into our story. We are forever changed by your presence in our lives."
+                            </p>
+                            <div class="flex flex-col items-center gap-4">
+                                <div class="w-12 h-[1px] bg-[#D4AF37] opacity-40"></div>
+                                <p class="font-montserrat text-[#D4AF37] text-[12px] uppercase tracking-[1em] font-bold">NATHANIEL & REA JOY</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-16">
+                            <a href="reminisce.html" class="group/btn relative inline-flex items-center justify-center py-6 px-16 bg-[#3B0764] text-white font-montserrat text-[11px] uppercase tracking-widest overflow-hidden transition-all duration-700 shadow-[0_20px_50px_rgba(59,7,100,0.2)] hover:shadow-[#D4AF37]/30">
+                                <span class="relative z-10 flex items-center gap-4">
+                                    <i class="fa-solid fa-camera-retro text-sm"></i>
+                                    Explore the Shared Memories
+                                </span>
+                                <div class="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -407,7 +468,7 @@
                                             <div class="space-y-2">
                                                 <span
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Fullname</span>
-                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Rea Joy
+                                                <p id="bride-fullname" class="font-cormorant text-[#3B0764] text-2xl font-bold">Rea Joy
                                                     Garfil
                                                     Cadiz</p>
                                             </div>
@@ -435,6 +496,11 @@
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Age</span>
                                                 <p class="font-cormorant text-[#3B0764] text-2xl font-bold">30 Years Old
                                                 </p>
+                                            </div>
+                                            <!-- Status row (hidden by default) -->
+                                            <div id="bride-status-row" class="space-y-2" style="display:none;">
+                                                <span class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Status</span>
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Married</p>
                                             </div>
                                         </div>
 
@@ -535,6 +601,11 @@
                                                     class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Age</span>
                                                 <p class="font-cormorant text-[#3B0764] text-2xl font-bold">28 Years Old
                                                 </p>
+                                            </div>
+                                            <!-- Status row (hidden by default) -->
+                                            <div id="groom-status-row" class="space-y-2" style="display:none;">
+                                                <span class="font-montserrat text-[11px] uppercase tracking-widest text-[#D4AF37] font-bold">Status</span>
+                                                <p class="font-cormorant text-[#3B0764] text-2xl font-bold">Married</p>
                                             </div>
                                         </div>
 
@@ -1021,6 +1092,133 @@
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- Captured Moments Section -->
+        <section class="min-h-screen py-24 bg-[#3B0764] relative overflow-hidden text-white flex items-center">
+            <!-- Decorative Background Elements -->
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+                <div
+                    class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37] rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2">
+                </div>
+                <div
+                    class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#D4AF37] rounded-full blur-[150px] translate-y-1/2 -translate-x-1/2">
+                </div>
+            </div>
+
+            <div class="container mx-auto px-6 lg:px-12 relative z-10 w-full">
+                <!-- Section Header -->
+                <div class="text-center mb-16 lg:mb-24" data-aos="fade-up">
+                    <span
+                        class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.5em] font-bold block mb-4">Through
+                        Your Eyes</span>
+                    <h2 class="font-playfair text-5xl md:text-7xl mb-6">Shared <span
+                            class="text-[#D4AF37] italic">Memories</span></h2>
+                    <p class="font-cormorant text-white/70 text-2xl max-w-2xl mx-auto italic">"Every photo is a thread
+                        in the tapestry of our shared joy. Help us collect these memories."</p>
+                </div>
+
+                <!-- Main Layout -->
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto">
+                    <!-- Left Column: The Phone Image (Occupies large space) -->
+                    <div class="flex justify-center lg:justify-start h-full items-center" data-aos="fade-right">
+                        <div class="relative group w-full max-w-sm lg:max-w-lg mx-auto">
+                            <div class="absolute inset-0 bg-[#D4AF37]/20 blur-[120px] rounded-full pointer-events-none">
+                            </div>
+                            <img src="phone/ChatGPT_Image_May_6__2026__10_53_45_AM-removebg.png"
+                                class="relative z-10 w-full h-auto object-contain animate-float drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Posting (Top) + QR Code (Bottom) -->
+                    <div class="flex flex-col gap-12 lg:gap-16 justify-center">
+                        <!-- Top Right: Social Media Hashtags -->
+                        <div class="space-y-6" data-aos="fade-left">
+                            <div class="flex items-center gap-6 mb-4">
+                                <div class="w-16 h-[1px] bg-[#D4AF37]"></div>
+                                <h3 class="font-montserrat text-[12px] uppercase tracking-[0.5em] text-[#D4AF37]">Social
+                                    Media</h3>
+                            </div>
+                            <div class="flex items-baseline gap-2 md:gap-3 flex-wrap">
+                                <span
+                                    class="font-playfair text-4xl md:text-5xl lg:text-6xl text-white tracking-wide">Share</span>
+                                <span
+                                    class="font-playfair text-4xl md:text-5xl lg:text-6xl text-white italic">the</span>
+                                <span
+                                    class="font-cormorant text-6xl md:text-7xl lg:text-8xl text-[#D4AF37] ml-2 tracking-wide font-medium">Joy</span>
+                                <i
+                                    class="fa-regular fa-heart text-[#D4AF37] text-2xl md:text-3xl -translate-y-4 ml-1"></i>
+                            </div>
+                            <p class="font-cormorant text-xl md:text-2xl text-white/70 leading-relaxed">
+                                When posting your favorite moments on Facebook or Instagram, please tag us and use our
+                                official hashtags so we can find every smile and tear:
+                            </p>
+                            <div class="space-y-3 pt-4 border-l-2 border-[#D4AF37]/30 pl-6">
+                                <p
+                                    class="font-montserrat text-lg md:text-xl text-[#D4AF37] tracking-wider transition-all duration-300 hover:translate-x-2 cursor-pointer">
+                                    #NathanielFoundHisJoy</p>
+                                <p
+                                    class="font-montserrat text-lg md:text-xl text-[#D4AF37] tracking-wider transition-all duration-300 hover:translate-x-2 cursor-pointer">
+                                    #NathanielFoundHisReaSon</p>
+                            </div>
+                            <div class="flex gap-6 text-3xl text-white/50 pt-2">
+                                <i
+                                    class="fa-brands fa-facebook hover:text-[#D4AF37] transition-colors cursor-pointer"></i>
+                                <i
+                                    class="fa-brands fa-instagram hover:text-[#D4AF37] transition-colors cursor-pointer"></i>
+                            </div>
+                        </div>
+
+                        <!-- "OR" Divider -->
+                        <div class="flex items-center gap-6 w-full opacity-70" data-aos="fade-up">
+                            <div class="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#D4AF37]/50"></div>
+                            <span class="font-playfair italic text-[#D4AF37] text-2xl md:text-3xl">or</span>
+                            <div class="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#D4AF37]/50"></div>
+                        </div>
+
+                        <!-- Bottom Right: Google Drive QR Code -->
+                        <div class="relative group z-50 w-full" data-aos="fade-up">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/20 to-transparent blur-2xl group-hover:blur-3xl transition-all duration-500 pointer-events-none">
+                            </div>
+                            <div
+                                class="relative bg-white/5 border border-white/10 p-8 lg:p-10 backdrop-blur-sm flex flex-col sm:flex-row items-center sm:items-start gap-8 justify-between">
+
+                                <div class="flex-1 text-center sm:text-left relative z-10 space-y-4">
+                                    <i class="fa-brands fa-google-drive text-[#D4AF37] text-4xl"></i>
+                                    <h4 class="font-playfair text-2xl lg:text-3xl italic">Upload Original Quality</h4>
+                                    <p class="font-cormorant text-lg text-white/70">Scan the QR code to upload your raw
+                                        photos and videos directly to our shared Google Drive folder.</p>
+                                    <div class="pt-4">
+                                        <a href="https://drive.google.com/drive/folders/1Qbtz63qkQ7bU1dXOAjgxysEBx327b3pv?usp=sharing"
+                                            target="_blank"
+                                            class="inline-block font-montserrat text-[10px] uppercase tracking-[0.3em] text-[#D4AF37] border-b border-[#D4AF37]/30 pb-1 hover:border-[#D4AF37] transition-colors relative z-50">
+                                            Or click here to upload
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="relative z-50 inline-block p-3 bg-white rounded-lg shadow-[0_0_40px_rgba(212,175,55,0.2)] group-hover:scale-105 transition-transform duration-500 shrink-0 mx-auto sm:mx-0">
+                                    <div class="relative w-40 h-40 md:w-48 md:h-48">
+                                        <img src="qrcode/qrcode.jpeg" alt="Upload QR Code"
+                                            class="w-full h-full object-contain">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Decorative Frame for QR Card -->
+                            <div
+                                class="absolute -top-3 -left-3 w-12 h-12 border-t border-l border-[#D4AF37]/50 pointer-events-none">
+                            </div>
+                            <div
+                                class="absolute -bottom-3 -right-3 w-12 h-12 border-b border-r border-[#D4AF37]/50 pointer-events-none">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Eternal Echo | Nathaniel & Rea</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Montserrat:wght@100;400;700&family=Dancing+Script:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        playfair: ['"Playfair Display"', 'serif'],
+                        cormorant: ['"Cormorant Garamond"', 'serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                        dancing: ['"Dancing Script"', 'cursive'],
+                    },
+                    animation: {
+                        'ripple': 'ripple 3s linear infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'scroll-slow': 'scroll 40s linear infinite',
+                    },
+                    keyframes: {
+                        ripple: {
+                            '0%': { transform: 'scale(1)', opacity: '0.4' },
+                            '100%': { transform: 'scale(2)', opacity: '0' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .parallax-section {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .photo-card {
+            background: white;
+            padding: 10px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            z-index: 10;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gold-texture {
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            background-color: #FBFAF7;
+        }
+
+        .ornament {
+            color: #D4AF37;
+            opacity: 0.3;
+        }
+
+        .text-handwritten {
+            font-family: 'Dancing Script', cursive;
+            color: #D4AF37;
+        }
+
+        /* Decorative Vertical Line */
+        .story-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, #D4AF37, transparent);
+            opacity: 0.2;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body class="gold-texture text-[#1F1F1F] selection:bg-purple-200 overflow-x-hidden">
+
+    <!-- Sacred Union Pre-Loader -->
+    <div id="loader"
+        class="fixed inset-0 z-[9999] bg-[#FBFAF7] flex items-center justify-center transition-opacity duration-1000 overflow-hidden">
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.2)_0%,_transparent_70%)] animate-pulse">
+        </div>
+        <div class="relative flex flex-col items-center justify-center text-center px-6">
+            <h1 class="font-playfair text-[#3B0764] text-7xl md:text-9xl tracking-[0.1em] mb-4">N <span
+                    class="text-[#D4AF37] italic">&</span> R</h1>
+            <p class="font-montserrat text-[10px] uppercase tracking-[1em] text-[#D4AF37]">Capturing Forever</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="opacity-0 transition-opacity duration-1000">
+
+        <!-- Custom Cursor -->
+        <div id="custom-cursor"
+            class="hidden lg:block fixed w-4 h-4 bg-[#D4AF37] rounded-full pointer-events-none z-[9999] mix-blend-difference">
+        </div>
+        <div id="custom-cursor-outline"
+            class="hidden lg:block fixed w-10 h-10 border border-[#D4AF37] rounded-full pointer-events-none z-[9998] transition-all duration-500 ease-out">
+        </div>
+
+        <!-- Navigation -->
+        <nav id="navbar"
+            class="fixed top-0 left-0 w-full z-50 flex justify-between items-center py-6 md:py-8 px-6 md:px-12 transition-all duration-700 bg-white/5 backdrop-blur-sm">
+            <a href="index.html" class="flex items-center space-x-4 group">
+                <div class="relative w-14 h-14 flex items-center justify-center">
+                    <div
+                        class="absolute inset-0 border border-[#D4AF37]/30 rounded-full group-hover:rotate-180 transition-transform duration-[2000ms]">
+                    </div>
+                    <img src="logo/1-removebg-preview.png" class="w-full h-full object-contain relative z-10">
+                </div>
+                <div class="hidden sm:block">
+                    <span class="block font-cormorant text-md text-[#3B0764] font-bold tracking-[0.2em]">NATHANIEL &
+                        REA</span>
+                    <span class="block font-montserrat text-[7px] uppercase tracking-[0.5em] text-slate-400">The Eternal
+                        Echo</span>
+                </div>
+            </a>
+            <div
+                class="hidden md:flex items-center space-x-10 font-montserrat text-[9px] uppercase tracking-[0.5em] font-bold text-[#3B0764]">
+                <a href="index.html" class="hover:text-[#D4AF37] transition-colors">Home</a>
+                <a href="gallery.html" class="hover:text-[#D4AF37] transition-colors">Pre-Wedding</a>
+                <a href="#" class="text-[#D4AF37] border-b border-[#D4AF37]">The Story</a>
+            </div>
+            <a href="index.html" class="md:hidden text-2xl text-[#3B0764]"><i class="fa-solid fa-house"></i></a>
+        </nav>
+
+        <!-- Hero: Full Bleed & Immersive -->
+        <section class="relative h-[110vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="galleryimages/95a9fb6e-3870-4be3-a786-d9ec527ea63e.jfif"
+                    class="w-full h-full object-cover scale-105 opacity-50 blur-[2px]">
+                <div class="absolute inset-0 bg-gradient-to-b from-[#FBFAF7]/80 via-transparent to-[#FBFAF7]"></div>
+            </div>
+
+            <div class="container mx-auto px-6 relative z-10 text-center">
+                <div class="reveal-up">
+                    <span
+                        class="font-montserrat text-[#D4AF37] text-[10px] md:text-[12px] uppercase tracking-[1.5em] font-bold block mb-12">May
+                        16th, 2026</span>
+                    <h1 class="font-playfair text-[#3B0764] text-8xl md:text-[15rem] leading-[0.7] mb-8">Our Sacred</h1>
+                    <h1 class="font-playfair text-[#D4AF37] text-8xl md:text-[15rem] leading-[0.7] italic mb-16">Story
+                    </h1>
+                    <div class="flex flex-col items-center">
+                        <div class="w-[1px] h-32 bg-gradient-to-b from-[#D4AF37] to-transparent"></div>
+                        <p class="mt-8 font-cormorant text-slate-500 text-3xl md:text-5xl italic leading-relaxed">
+                            "Relive the moments where heaven touched earth."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter I: The Journey Begins -->
+        <section class="py-24 relative overflow-hidden bg-[#FBFAF7]">
+            <div class="container mx-auto px-6 lg:px-24 relative z-10">
+
+                <!-- Section Header -->
+                <div class="text-center mb-32 reveal-up">
+                    <span
+                        class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[1.2em] font-bold block mb-4">Part
+                        I</span>
+                    <h2 class="font-playfair text-[#3B0764] text-5xl md:text-8xl mb-6 italic">The <span
+                            class="text-[#D4AF37]">Journey</span></h2>
+                    <p class="font-cormorant text-slate-400 text-2xl md:text-3xl italic">"A path woven with love and
+                        grace."</p>
+                </div>
+
+                <div class="relative w-full space-y-40">
+                    <!-- Massive Background Stitches -->
+                    <div class="absolute inset-0 z-0 hidden md:block pointer-events-none scale-y-110">
+                        <svg class="w-full h-full text-[#D4AF37] opacity-60" viewBox="0 0 100 300" preserveAspectRatio="none">
+                            <path d="M 20,-5 C -20,40 20,95 50,100 C 80,105 120,160 50,200 C -20,240 20,295 50,305" 
+                                  fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3,6" stroke-linecap="round" vector-effect="non-scaling-stroke" />
+                        </svg>
+                        
+                        <!-- Plane 1 (Start) -->
+                        <div class="absolute top-[2%] left-[15%] -translate-x-1/2 -translate-y-1/2 animate-float">
+                            <div class="bg-[#FBFAF7] rounded-full p-1" style="transform: rotate(142deg);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#D4AF37] drop-shadow-md">
+                                    <path d="M22 2L11 13" /><path d="M22 2L15 22L11 13L2 9L22 2z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Plane 2 (Left Loop) -->
+                        <div class="absolute top-[18%] left-[2%] -translate-x-1/2 -translate-y-1/2 animate-float" style="animation-delay: -0.5s;">
+                            <div class="bg-[#FBFAF7] rounded-full p-1" style="transform: rotate(111deg);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#D4AF37] drop-shadow-md">
+                                    <path d="M22 2L11 13" /><path d="M22 2L15 22L11 13L2 9L22 2z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Plane 3 (Center cross 1) -->
+                        <div class="absolute top-[33.3%] left-[50%] -translate-x-1/2 -translate-y-1/2 animate-float" style="animation-delay: -1s;">
+                            <div class="bg-[#FBFAF7] rounded-full p-1" style="transform: rotate(50deg);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#D4AF37] drop-shadow-md">
+                                    <path d="M22 2L11 13" /><path d="M22 2L15 22L11 13L2 9L22 2z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Plane 4 (Right Loop) -->
+                        <div class="absolute top-[50%] left-[92%] -translate-x-1/2 -translate-y-1/2 animate-float" style="animation-delay: -1.5s;">
+                            <div class="bg-[#FBFAF7] rounded-full p-1" style="transform: rotate(138deg);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#D4AF37] drop-shadow-md">
+                                    <path d="M22 2L11 13" /><path d="M22 2L15 22L11 13L2 9L22 2z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Plane 5 (Center cross 2) -->
+                        <div class="absolute top-[66.6%] left-[50%] -translate-x-1/2 -translate-y-1/2 animate-float" style="animation-delay: -2s;">
+                            <div class="bg-[#FBFAF7] rounded-full p-1" style="transform: rotate(209deg);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#D4AF37] drop-shadow-md">
+                                    <path d="M22 2L11 13" /><path d="M22 2L15 22L11 13L2 9L22 2z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Plane 6 (Bottom Left Loop) -->
+                        <div class="absolute top-[82%] left-[2%] -translate-x-1/2 -translate-y-1/2 animate-float" style="animation-delay: -2.5s;">
+                            <div class="bg-[#FBFAF7] rounded-full p-1" style="transform: rotate(138deg);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#D4AF37] drop-shadow-md">
+                                    <path d="M22 2L11 13" /><path d="M22 2L15 22L11 13L2 9L22 2z" />
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Plane 7 (End) -->
+                        <div class="absolute top-[98%] left-[40%] -translate-x-1/2 -translate-y-1/2 animate-float" style="animation-delay: -3s;">
+                            <div class="bg-[#FBFAF7] rounded-full p-1" style="transform: rotate(77deg);">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-[#D4AF37] drop-shadow-md">
+                                    <path d="M22 2L11 13" /><path d="M22 2L15 22L11 13L2 9L22 2z" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Story Block 1 -->
+                    <div class="flex flex-col md:flex-row items-center gap-16 md:gap-24 relative z-10">
+                        <div class="md:w-1/2 reveal-up">
+                            <div class="photo-card -rotate-3 hover:rotate-0 relative mt-4">
+                                <div
+                                    class="absolute -top-5 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-br from-[#f9d976] to-[#D4AF37] shadow-[0_5px_10px_rgba(0,0,0,0.3)] z-20 border-2 border-white flex items-center justify-center">
+                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
+                                </div>
+                                <div class="relative p-2 bg-white border border-slate-100 shadow-sm">
+                                    <img src="galleryimages/85bb751f-67e9-4b00-9438-beb048ea3135.jfif"
+                                        class="w-full h-auto" alt="">
+                                </div>
+                                <div class="mt-6 text-center pb-4">
+                                    <span class="text-handwritten text-4xl">The First Step</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 reveal-up text-center md:text-left">
+                            <h3 class="font-playfair text-[#3B0764] text-5xl italic mb-6">A Quiet Dawn</h3>
+                            <p class="font-cormorant text-slate-500 text-2xl leading-relaxed">
+                                The morning sun broke through, carrying with it the promise of forever. Every moment
+                                felt like a dream unfolding, guided by faith.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Story Block 2 -->
+                    <div class="flex flex-col md:flex-row-reverse items-center gap-16 md:gap-24 relative z-10">
+                        <div class="md:w-1/2 reveal-up">
+                            <div class="photo-card rotate-3 hover:rotate-0 relative mt-4">
+                                <div
+                                    class="absolute -top-5 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-br from-[#f9d976] to-[#D4AF37] shadow-[0_5px_10px_rgba(0,0,0,0.3)] z-20 border-2 border-white flex items-center justify-center">
+                                    <div class="w-2 h-2 rounded-full bg-white/40"></div>
+                                </div>
+                                <div class="relative p-2 bg-white border border-slate-100 shadow-sm">
+                                    <img src="galleryimages/39adf5dc-575c-4238-8789-8e689c011b01.jfif"
+                                        class="w-full h-auto">
+                                </div>
+                                <div class="mt-6 text-center pb-4">
+                                    <span class="text-handwritten text-4xl">Grace</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 reveal-up text-center md:text-right">
+                            <h3 class="font-playfair text-[#3B0764] text-5xl italic mb-6">Radiance</h3>
+                            <p class="font-cormorant text-slate-500 text-2xl leading-relaxed">
+                                Surrounded by love and whispered prayers, she stepped into the light, a vision of grace
+                                ready to meet her destiny.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Story Block 3 -->
+                    <div class="max-w-4xl mx-auto pt-6 relative z-10 reveal-up">
+                        <div class="photo-card -rotate-2 hover:rotate-0 relative mt-4">
+                            <div
+                                class="absolute -top-5 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-br from-[#f9d976] to-[#D4AF37] shadow-[0_5px_10px_rgba(0,0,0,0.3)] z-20 border-2 border-white flex items-center justify-center">
+                                <div class="w-2 h-2 rounded-full bg-white/40"></div>
+                            </div>
+                            <div class="relative p-2 bg-white border border-slate-100 shadow-sm">
+                                <img src="galleryimages/c8697aae-34cd-4b1b-be51-4f485d0609ab.jfif"
+                                    class="w-full h-auto">
+                            </div>
+                            <div class="mt-6 text-center pb-4">
+                                <span class="text-handwritten text-4xl">The Covenant</span>
+                            </div>
+                        </div>
+                        <div class="mt-16 text-center">
+                            <h3 class="font-playfair text-[#3B0764] text-5xl italic mb-6">Two Become One</h3>
+                            <p class="font-cormorant text-slate-500 text-2xl leading-relaxed max-w-2xl mx-auto">
+                                "And in that sacred space, all the waiting made perfect sense. Two lives beautifully
+                                intertwined."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Interlude: Large Quote Section -->
+        <section class="py-40 md:py-60 relative parallax-section"
+            style="background-image: url('galleryimages/caf1e8e4-1234-4c12-830a-d9e646235d44.jfif')">
+            <div class="absolute inset-0 bg-[#3B0764]/80 backdrop-blur-[2px]"></div>
+            <div class="container mx-auto px-6 relative z-10 text-center text-white">
+                <div class="reveal-up">
+                    <i class="fa-solid fa-quote-left text-[#D4AF37] text-6xl mb-12 opacity-50"></i>
+                    <h2 class="font-playfair text-5xl md:text-8xl italic leading-relaxed mb-12">
+                        "Where you go, I will go; <br class="hidden md:block"> where you stay, I will stay."
+                    </h2>
+                    <div class="w-24 h-[1px] bg-[#D4AF37] mx-auto mb-8"></div>
+                    <p class="font-montserrat text-[12px] uppercase tracking-[1em] text-[#D4AF37]">Ruth 1:16</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter II: The Film (Rich Experience) -->
+        <section class="py-32 md:py-56 bg-[#FBFAF7] relative overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-24 relative z-10">
+                <div class="text-center mb-32 reveal-up">
+                    <span
+                        class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[1.5em] font-bold block mb-6">Part
+                        II</span>
+                    <h2 class="font-playfair text-[#3B0764] text-6xl md:text-[11rem] leading-none mb-10 italic">The
+                        Cinematic <br> <span class="text-[#D4AF37]">Soul</span></h2>
+                    <p class="font-cormorant text-slate-400 text-3xl md:text-5xl italic max-w-4xl mx-auto">"A tapestry
+                        of heartbeats, woven in motion."</p>
+                </div>
+
+                <div class="max-w-7xl mx-auto reveal-up">
+                    <div
+                        class="relative group rounded-sm overflow-hidden shadow-[0_50px_120px_rgba(0,0,0,0.3)] border-8 border-white">
+                        <div class="aspect-video bg-black relative flex items-center justify-center">
+                            <!-- Play Button Overlay -->
+                            <div class="absolute inset-0 z-20 flex items-center justify-center">
+                                <div class="relative group">
+                                    <div class="absolute inset-0 bg-[#D4AF37] rounded-full animate-ripple"></div>
+                                    <div class="absolute inset-0 bg-[#D4AF37] rounded-full animate-ripple"
+                                        style="animation-delay: 1.5s"></div>
+                                    <button
+                                        class="relative w-24 h-24 md:w-48 md:h-48 rounded-full bg-white flex items-center justify-center text-[#3B0764] group-hover:bg-[#D4AF37] group-hover:text-white transition-all duration-700 shadow-2xl">
+                                        <i class="fa-solid fa-play text-2xl md:text-5xl translate-x-1"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <img src="galleryimages/95a9fb6e-3870-4be3-a786-d9ec527ea63e.jfif"
+                                class="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:opacity-70 transition-all duration-1000">
+                        </div>
+                        <div
+                            class="absolute bottom-10 left-10 text-white z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <p class="font-montserrat text-[10px] uppercase tracking-[0.5em] mb-2">Nathaniel & Rea</p>
+                            <h4 class="font-playfair text-4xl italic">Wedding Highlights Film</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter III: The Joy (Denser Content) -->
+        <section class="py-24 md:py-40 bg-[#FBFAF7] relative overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-24">
+                <div class="flex flex-col lg:flex-row gap-20 items-end justify-between mb-32 reveal-up">
+                    <div class="max-w-2xl">
+                        <span
+                            class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[1.2em] font-bold block mb-4">Part
+                            III</span>
+                        <h2 class="font-playfair text-[#3B0764] text-5xl md:text-[8rem] leading-none mb-8 italic">The
+                            <span class="text-[#D4AF37]">Celebration</span>
+                        </h2>
+                        <p class="font-cormorant text-slate-400 text-2xl leading-relaxed">
+                            "From the first toast to the last dance, every second was a celebration of a love that will
+                            last a lifetime."
+                        </p>
+                    </div>
+                    <div class="hidden lg:block">
+                        <div class="w-48 h-[1px] bg-[#D4AF37] mb-4"></div>
+                        <p class="font-montserrat text-[#D4AF37] text-[10px] uppercase tracking-[0.5em]">Laughter & Love
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Masonry Grid: No empty space -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-10">
+                    <div class="space-y-4 md:space-y-10">
+                        <div class="photo-card -rotate-1 reveal-up">
+                            <img src="galleryimages/32e172fc-42f4-4216-9a35-d83a5d5d8c9a.jfif" class="w-full h-auto">
+                        </div>
+                        <div class="photo-card rotate-2 reveal-up">
+                            <img src="galleryimages/65319a7e-5373-46d2-ab01-e1c6ae33137d.jfif" class="w-full h-auto">
+                        </div>
+                        <div class="bg-[#3B0764] p-8 rounded-sm text-white reveal-up">
+                            <p class="font-cormorant text-2xl italic leading-relaxed text-center">"Forever begins with a
+                                joyful heart."</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4 md:space-y-10 md:pt-20">
+                        <div class="photo-card rotate-1 reveal-up">
+                            <img src="galleryimages/7e2c7d1f-2fa2-4188-8937-5fdf1daa80c3.jfif" class="w-full h-auto">
+                        </div>
+                        <div class="photo-card -rotate-2 reveal-up">
+                            <img src="galleryimages/8ddbb0f2-1e99-4e2e-929a-3648e648ba4e.jfif" class="w-full h-auto">
+                        </div>
+                        <div class="photo-card rotate-3 reveal-up">
+                            <img src="galleryimages/736c39b4-9336-4e53-ac8e-50e1b77ab635.jfif" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="space-y-4 md:space-y-10">
+                        <div class="photo-card -rotate-3 reveal-up">
+                            <img src="galleryimages/bd8cdcfc-0432-4002-bb0d-cd6250606deb.jfif" class="w-full h-auto">
+                        </div>
+                        <div class="photo-card rotate-1 reveal-up">
+                            <img src="galleryimages/bde28bcd-19a1-4bba-9a40-47e8c507b34c.jfif" class="w-full h-auto">
+                        </div>
+                        <div class="border border-[#D4AF37]/20 p-8 text-center reveal-up">
+                            <span class="text-handwritten text-4xl">Pure Joy</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4 md:space-y-10 md:pt-20">
+                        <div class="photo-card rotate-2 reveal-up">
+                            <img src="galleryimages/bf2bba31-9c4c-4734-b4bf-4222e0f761a3.jfif" class="w-full h-auto">
+                        </div>
+                        <div class="photo-card -rotate-1 reveal-up">
+                            <img src="galleryimages/ca8b99af-70f9-4281-bbd7-32dee3f1c04e.jfif" class="w-full h-auto">
+                        </div>
+                        <div class="photo-card rotate-1 reveal-up">
+                            <img src="galleryimages/dbb6633c-0ec9-41c8-b6b9-df4806da6e35.jfif" class="w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Message: Meaningful & Full -->
+        <section class="py-32 md:py-60 bg-[#FBFAF7] relative overflow-hidden text-center">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="reveal-up">
+                    <div class="w-24 h-[1px] bg-[#D4AF37] mx-auto mb-16"></div>
+                    <h2 class="font-playfair text-[#3B0764] text-7xl md:text-[12rem] leading-none mb-12 italic">Eternity
+                        <br class="hidden md:block"> InSight
+                    </h2>
+                    <p
+                        class="font-cormorant text-slate-400 text-3xl md:text-5xl italic mb-20 max-w-2xl mx-auto leading-relaxed">
+                        "Thank you for being part of our beautiful beginning. This story is only just starting."
+                    </p>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-8 reveal-up"
+                        style="transition-delay: 200ms">
+                        <a href="index.html"
+                            class="group relative inline-block py-6 px-16 border border-[#3B0764] text-[#3B0764] font-montserrat text-[10px] uppercase tracking-[0.5em] overflow-hidden transition-all duration-700">
+                            <span class="relative z-10 group-hover:text-white transition-colors">Return Home</span>
+                            <div
+                                class="absolute inset-0 bg-[#3B0764] translate-y-full group-hover:translate-y-0 transition-transform duration-700">
+                            </div>
+                        </a>
+                        <a href="gallery.html"
+                            class="group relative inline-block py-6 px-16 border border-[#D4AF37] text-[#D4AF37] font-montserrat text-[10px] uppercase tracking-[0.5em] overflow-hidden transition-all duration-700">
+                            <span class="relative z-10 group-hover:text-white transition-colors">Pre-Wedding
+                                Gallery</span>
+                            <div
+                                class="absolute inset-0 bg-[#D4AF37] translate-y-full group-hover:translate-y-0 transition-transform duration-700">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Grounding Accents -->
+            <div
+                class="absolute -bottom-40 -left-40 w-[600px] h-[600px] border border-[#D4AF37]/10 rounded-full animate-float">
+            </div>
+            <div class="absolute top-0 -right-40 w-[400px] h-[400px] border border-[#3B0764]/5 rounded-full animate-float"
+                style="animation-delay: -3s"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full py-24 bg-[#3B0764] text-white">
+            <div
+                class="px-6 md:px-24 flex flex-col md:flex-row justify-between items-center gap-16 text-center md:text-left opacity-30">
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <span class="font-cormorant text-4xl tracking-widest uppercase">Nathaniel <span
+                            class="text-[#D4AF37] italic">&</span> REA</span>
+                </div>
+                <div class="space-y-3">
+                    <p class="font-montserrat text-[11px] uppercase tracking-[0.8em]">EST. MAY 2026</p>
+                    <p class="font-montserrat text-[9px] uppercase tracking-[0.6em] text-[#D4AF37]">The Sacred Union</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Intersection Observer Reveal
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
+
+        // Custom Cursor Sync
+        const cursor = document.getElementById('custom-cursor');
+        const outline = document.getElementById('custom-cursor-outline');
+
+        if (cursor) {
+            window.addEventListener('mousemove', (e) => {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursor.style.transform = `translate(${posX}px, ${posY}px)`;
+                if (outline) {
+                    outline.animate({
+                        transform: `translate(${posX - 12}px, ${posY - 12}px)`
+                    }, { duration: 600, fill: "forwards" });
+                }
+            });
+
+            document.querySelectorAll('a, button').forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    cursor.style.transform += ' scale(4)';
+                    if (outline) outline.style.borderColor = 'white';
+                });
+                link.addEventListener('mouseleave', () => {
+                    cursor.style.transform = cursor.style.transform.replace(' scale(4)', '');
+                    if (outline) outline.style.borderColor = '#D4AF37';
+                });
+            });
+        }
+
+        // Loader Reveal
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            const mainContent = document.getElementById('main-content');
+            setTimeout(() => {
+                if (loader) loader.style.opacity = '0';
+                if (mainContent) mainContent.style.opacity = '1';
+                setTimeout(() => {
+                    if (loader) loader.style.display = 'none';
+                }, 1000);
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
